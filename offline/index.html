@@ -415,20 +415,31 @@ function renderPage(id) {
 
     appDiv.textContent = ''; // Clear previous content
 
-    // If the page content is a DOM node, append it
     if (page.html instanceof HTMLElement) {
         appDiv.appendChild(page.html);
     } else if (typeof page.html === 'string') {
-        // If it's a string of HTML, parse it safely
         const template = document.createElement('template');
         template.innerHTML = page.html.trim();
 
         Array.from(template.content.childNodes).forEach(node => {
-            appDiv.appendChild(node);
+            if (node.tagName === 'SCRIPT') {
+                // Create a new script element to run it
+                const script = document.createElement('script');
+                if (node.src) {
+                    script.src = node.src; // external script
+                    script.async = false;  // preserve order
+                } else {
+                    script.textContent = node.textContent; // inline script
+                }
+                document.head.appendChild(script); // execute script
+                document.head.removeChild(script); // optional cleanup
+            } else {
+                appDiv.appendChild(node);
+            }
         });
     }
 
-    // Attach button listeners inside page content
+    // Reattach button listeners inside page content
     const buttons = appDiv.querySelectorAll('button[data-target]');
     buttons.forEach(btn => {
         btn.addEventListener('click', e => {
@@ -436,7 +447,6 @@ function renderPage(id) {
         });
     });
 }
-
 // Initialize SPA
 buildNav();
 renderPage('home');
