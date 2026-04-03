@@ -1,0 +1,72 @@
+/* Custom Font */
+@font-face {
+  font-family: "thisisafont";
+  src: url("assets/Web437_NEC_APC3_8x16.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reset and body styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "thisisafont", monospace, sans-serif; /* Use custom font */
+  background: #000 url('./gikoshii.png') repeat-y center center fixed;
+  background-size: cover;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Container for content */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px;
+  transition: all 0.5s ease;
+}
+
+/* Navigation bar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 999;
+}
+
+nav a {
+  color: #0ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff0;
+}
+
+/* Buttons */
+button {
+  font-family: "thisisafont", monospace, sans-serif; /* Use custom font */
+  background: #0ff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  background: #ff0;
+  color: #000;
+}
