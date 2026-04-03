@@ -6,7 +6,6 @@ const unblockersPage = {
 	<style>
   .unblock-container {
     min-height: 100vh;
-    background: #0d1117;
     color: #e6edf3;
     font-family: system-ui, sans-serif;
     display: flex;
@@ -17,7 +16,6 @@ const unblockersPage = {
   }
 
   .card {
-    background: #161b22;
     padding: 25px;
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
