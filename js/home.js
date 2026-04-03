@@ -1,6 +1,6 @@
 const homePage = {
     id: "home",
-    title: "Home",
+    title: "home",
     html: `
       <h1>gamezhub</h1>
       <p>lorem</p>
