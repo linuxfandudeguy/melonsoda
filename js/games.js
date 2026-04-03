@@ -4,8 +4,26 @@ const gamesPage = {
     html: `
       <h1>games</h1>
 
-      <a href="#" class="game-link"
-         onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html'); return false;">
+      <a href="javascript:(function(){
+    var w = window.open('about:blank', '_blank');
+    if(!w){alert('Popup blocked! Allow popups for this site.'); return;}
+    
+    // Make the window fullscreen
+    w.moveTo(0,0);
+    w.resizeTo(screen.width, screen.height);
+
+    // Write the Eaglercraft iframe
+    w.document.write('<html><head><title>Eaglercraft</title>'+
+                     '<style>body,html{margin:0;padding:0;overflow:hidden;}</style>'+
+                     '</head><body>'+
+                     '<iframe src="https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html" '+
+                     'style="width:100%;height:100%;border:none;"></iframe>'+
+                     '</body></html>');
+    w.document.close();
+
+    // Optional: request fullscreen if supported
+    w.document.documentElement.requestFullscreen?.();
+})();" class="game-link">
         Eaglercraft
       </a>
 
