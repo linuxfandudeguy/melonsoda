@@ -6,7 +6,7 @@ const gamesPage = {
 
       <!-- Example buttons -->
       <button onclick="openModal('https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html')">eaglercraft</button>
-      <button onclick="openModal(https://file.garden/ZtNXqbPCZ1cAh6MT/baldi/index.html')">baldi's basics</button>
+      <button onclick="openModal('https://file.garden/ZtNXqbPCZ1cAh6MT/baldi/index.html')">baldi's basics</button>
 
       <!-- Modal container -->
       <div id="gameModal" style="
