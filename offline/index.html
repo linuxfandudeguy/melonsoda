@@ -148,38 +148,6 @@ button:hover {
   border-radius: 15px;      
 }
 </style>
-
-<script>
-(async () => {
-  const LOCAL_HASH = "2125137729c7e35f3acdbb07abb5c4ad6ad43d34f8e0d5cba9f7d74ead0e19e6";
-  const UPDATE_URL = "https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html";
-
-  async function sha256(text) {
-    const enc = new TextEncoder().encode(text);
-    const buf = await crypto.subtle.digest("SHA-256", enc);
-    return [...new Uint8Array(buf)]
-      .map(b => b.toString(16).padStart(2, "0"))
-      .join("");
-  }
-
-  try {
-    const res = await fetch(UPDATE_URL, { cache: "no-store" });
-    const remoteText = await res.text();
-    const remoteHash = await sha256(remoteText);
-
-    if (remoteHash !== LOCAL_HASH) {
-      if (confirm("Update detected.\n\nUpdate now?")) {
-        document.open();
-        document.write(remoteText);
-        document.close();
-      }
-    }
-  } catch (e) {
-    console.warn("Update check failed:", e);
-  }
-})();
-</script>
-
 </head>
 <body>
 
@@ -243,39 +211,7 @@ const gamesPage = {
   html: `
     <h1>Games</h1>
 
- <a href="javascript:(function(){var w=window.open('about:blank','_blank');if(!w){alert('Popup blocked');return;}w.moveTo(0,0);w.resizeTo(screen.width,screen.height);w.focus();w.document.write('<!DOCTYPE html><html><head><title>minecraft</title><style>html,body{margin:0;height:100%;overflow:hidden;background:black;}</style>
-<script>
-(async () => {
-  const LOCAL_HASH = "2125137729c7e35f3acdbb07abb5c4ad6ad43d34f8e0d5cba9f7d74ead0e19e6";
-  const UPDATE_URL = "https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html";
-
-  async function sha256(text) {
-    const enc = new TextEncoder().encode(text);
-    const buf = await crypto.subtle.digest("SHA-256", enc);
-    return [...new Uint8Array(buf)]
-      .map(b => b.toString(16).padStart(2, "0"))
-      .join("");
-  }
-
-  try {
-    const res = await fetch(UPDATE_URL, { cache: "no-store" });
-    const remoteText = await res.text();
-    const remoteHash = await sha256(remoteText);
-
-    if (remoteHash !== LOCAL_HASH) {
-      if (confirm("Update detected.\n\nUpdate now?")) {
-        document.open();
-        document.write(remoteText);
-        document.close();
-      }
-    }
-  } catch (e) {
-    console.warn("Update check failed:", e);
-  }
-})();
-</script>
-
-</head><body><iframe src=&quot;https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html&quot; style=&quot;width:100%;height:100%;border:none;&quot; allowfullscreen></iframe><script>document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();<\/script></body></html>');w.document.close();})();"> Eaglercraft (opens in about:blank) </a>
+ <a href="javascript:(function(){var w=window.open('about:blank','_blank');if(!w){alert('Popup blocked');return;}w.moveTo(0,0);w.resizeTo(screen.width,screen.height);w.focus();w.document.write('<!DOCTYPE html><html><head><title>minecraft</title><style>html,body{margin:0;height:100%;overflow:hidden;background:black;}</style></head><body><iframe src=&quot;https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html&quot; style=&quot;width:100%;height:100%;border:none;&quot; allowfullscreen></iframe><script>document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();<\/script></body></html>');w.document.close();})();"> Eaglercraft (opens in about:blank) </a>
     
     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/baldi/index.html'); return false;">
       Baldi's Basics
