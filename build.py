@@ -1,6 +1,7 @@
 # Credit to https://github.com/nautilus-os/NautilusOS for the original script
 # Licensed under AGPL-3.0 license
-
+# Credit to https://github.com/nautilus-os/NautilusOS
+# Licensed under AGPL-3.0 license
 
 import base64
 import mimetypes
