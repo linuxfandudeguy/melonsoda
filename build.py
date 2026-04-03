@@ -180,8 +180,8 @@ update_script = """
 update_script = update_script.replace("__HASH__", file_hash)
 
 # --- Inject Script ---
-if "</body>" in index_text:
-    index_text = index_text.replace("</body>", update_script + "\n</body>")
+if "</head>" in index_text:
+    index_text = index_text.replace("</head>", update_script + "\n</head>")
 else:
     index_text += update_script
 
