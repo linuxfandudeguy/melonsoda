@@ -3,44 +3,7 @@ const gamesPage = {
     title: "games",
     html: `
       <h1>games</h1>
-     <style>
-     /* Base link style */
-a {
-  font-family: "thisisafont", monospace, sans-serif;
-  color: #0ff;              /* Neon cyan */
-  text-decoration: none;    /* Remove underline */
-  transition: all 0.3s ease;
-  position: relative;
-}
 
-/* Hover effect with color change and glow */
-a:hover {
-  color: #ff0;              /* Neon yellow */
-  text-shadow: 0 0 5px #ff0, 0 0 10px #ff0;
-}
-
-
-a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;             /* Position below text */
-  width: 0;
-  height: 2px;
-  background: #0ff;
-  transition: width 0.3s ease;
-}
-
-a:hover::after {
-  width: 100%;
-}
-
-
-a:active, a:focus {
-  color: #f0f;              /* Magenta flash on click */
-  text-shadow: 0 0 8px #f0f, 0 0 15px #f0f;
-}
-</style>
     <div class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html')">
         Eaglercraft
     </div>
