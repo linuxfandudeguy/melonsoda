@@ -23,6 +23,7 @@ const unblockersPage = {
     ></iframe>
 </div> 
 };
+`
 
 window.Pages = window.Pages || [];
 window.Pages.push(unblockersPage);
