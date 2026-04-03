@@ -1,9 +1,13 @@
 const appDiv = document.getElementById('app');
 const navDiv = document.getElementById('nav');
 
-// Build nav from Apps array
+// Build nav from Pages array
 function buildNav() {
-    navDiv.innerHTML = window.Apps.map(app => `<a href="#" data-target="${app.id}">${app.title}</a>`).join('');
+    navDiv.innerHTML = window.Pages.map(page =>
+        `<a href="#" data-target="${page.id}">${page.title}</a>`
+    ).join('');
+
+    // Attach click listeners
     document.querySelectorAll('nav a').forEach(link=>{
         link.addEventListener('click', e=>{
             e.preventDefault();
@@ -14,11 +18,11 @@ function buildNav() {
 
 // Render a page by id
 function renderPage(id) {
-    const app = window.Apps.find(a=>a.id===id);
-    if(!app) return;
-    appDiv.innerHTML = app.html;
+    const page = window.Pages.find(p => p.id === id);
+    if(!page) return;
+    appDiv.innerHTML = page.html;
 
-    // attach button listeners inside app content
+    // Attach button listeners inside page content
     const buttons = appDiv.querySelectorAll('button[data-target]');
     buttons.forEach(btn=>{
         btn.addEventListener('click', e=>{
@@ -27,6 +31,6 @@ function renderPage(id) {
     });
 }
 
-// Init
+// Initialize SPA
 buildNav();
 renderPage('home');
