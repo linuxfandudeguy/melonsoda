@@ -147,3 +147,5 @@ const unblockersPage = {
 </script>
 `
 };
+window.Pages = window.Pages || [];
+window.Pages.push(unblockersPage);
