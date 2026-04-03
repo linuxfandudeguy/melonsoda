@@ -12,7 +12,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "thisisafont", monospace, sans-serif; /* Use custom font */
-  background: #000 url('./gikoshii.png') repeat center center fixed;
   color: #fff;
   overflow-x: hidden;
 }
