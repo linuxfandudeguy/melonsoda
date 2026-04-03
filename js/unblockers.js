@@ -1,8 +1,10 @@
+
 const unblockersPage = {
     id: "unblock",
     title: "unblockers",
     html: `
     <h1>unblockers</h1>
+
 <div id="viewer-cli-container">
     <div class="terminal"></div>
     <div class="input-line">
@@ -62,7 +64,7 @@ const unblockersPage = {
     const videos = root.querySelector(".videos");
 
     const base = "https://www.youtube-nocookie.com/embed/";
-    const end = "?autoplay=1&rel=0&modestbranding=1"; // fullscreen allowed
+    const end = "?autoplay=1&rel=0&modestbranding=1";
 
     function log(text, type) {
         type = type || "INFO";
@@ -97,13 +99,10 @@ const unblockersPage = {
         videos.prepend(iframe);
         log("Playback started", "SUCCESS");
 
-        // ✅ Trigger fullscreen immediately (user gesture)
         try {
             if (iframe.requestFullscreen) {
                 iframe.requestFullscreen();
                 log("Fullscreen activated!", "FULLSCREEN");
-            } else {
-                log("Fullscreen not supported by browser", "ERROR");
             }
         } catch (err) {
             log("Fullscreen denied: " + err.message, "ERROR");
@@ -119,8 +118,8 @@ const unblockersPage = {
 
         if (command === "help") {
             log("Commands:");
-            log("load <url>  - load a YouTube video and go fullscreen");
-            log("clear       - clear terminal");
+            log("load <url>");
+            log("clear");
         } else if (command === "load") {
             if (!arg) {
                 log("Missing URL", "ERROR");
@@ -143,10 +142,10 @@ const unblockersPage = {
     });
 
     log("viewer-cli initialized", "BOOT");
-    log("type 'help' for commands", "BOOT");
 })();
-</script>
+</scr` + `ipt>
 `
+
 };
 window.Pages = window.Pages || [];
 window.Pages.push(unblockersPage);
