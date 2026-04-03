@@ -1,7 +1,7 @@
 # Credit to https://github.com/nautilus-os/NautilusOS for the original script
+# This script is a edited version of the original script.
 # Licensed under AGPL-3.0 license
-# Credit to https://github.com/nautilus-os/NautilusOS
-# Licensed under AGPL-3.0 license
+
 
 import base64
 import mimetypes
@@ -27,10 +27,6 @@ def fetch_bytes(url):
             cache[url] = resp.read()
     return cache[url]
 
-def read_local_bytes(path):
-    full_path = root / path.lstrip("/")
-    return full_path.read_bytes()
-
 def guess_mime(path):
     return mimetypes.guess_type(str(path))[0] or "application/octet-stream"
 
@@ -54,19 +50,23 @@ def inline_css_assets(css_text, base_path):
         if target.startswith("data:") or target.startswith("#"):
             return match.group(0)
 
-        if isinstance(base_path, pathlib.Path):
-            asset_path = (base_path.parent / target).resolve()
-            if not asset_path.exists():
-                print(f"Warning: Asset not found: {asset_path}")
-                return match.group(0)
-            data = asset_path.read_bytes()
-            mime = guess_mime(asset_path)
-        else:
-            asset_url = urllib.parse.urljoin(base_path, target)
-            data = fetch_bytes(asset_url)
-            mime = guess_mime(asset_url)
+        try:
+            if isinstance(base_path, pathlib.Path):
+                asset_path = (base_path.parent / target).resolve()
+                if not asset_path.exists():
+                    print(f"Warning: Asset not found: {asset_path}")
+                    return match.group(0)
+                data = asset_path.read_bytes()
+                mime = guess_mime(asset_path)
+            else:
+                asset_url = urllib.parse.urljoin(base_path, target)
+                data = fetch_bytes(asset_url)
+                mime = guess_mime(asset_url)
 
-        return f"url('{to_data_url(data, mime)}')"
+            return f"url('{to_data_url(data, mime)}')"
+        except Exception as e:
+            print(f"CSS asset error: {target} -> {e}")
+            return match.group(0)
 
     return re.sub(r"url\(([^)]+)\)", repl, css_text)
 
@@ -78,7 +78,8 @@ def inline_script(match):
             script_text = fetch_bytes(src).decode("utf-8")
         else:
             script_text = (root / src.lstrip("/")).read_text(encoding="utf-8")
-        return f"<script>\n{script_text}\n</script>"
+
+        return "<script>\n" + script_text + "\n</script>"
     except Exception as e:
         print(f"Failed to inline script {src}: {e}")
         return match.group(0)
@@ -130,14 +131,14 @@ img_pattern = re.compile(
 )
 index_text = re.sub(img_pattern, inline_img, index_text)
 
-# --- Compute SHA256 of final output ---
+# --- Compute SHA256 ---
 file_hash = hashlib.sha256(index_text.encode("utf-8")).hexdigest()
 
-# --- Inject Update Checker ---
-update_script = f"""
+# --- Inject Update Script (NO f-string issues) ---
+update_script = """
 <script>
 (async () => {{
-  const LOCAL_HASH = "{file_hash}";
+  const LOCAL_HASH = "{hash}";
   const UPDATE_URL = "https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html";
 
   async function sha256(text) {{
@@ -165,9 +166,9 @@ update_script = f"""
   }}
 })();
 </script>
-"""
+""".format(hash=file_hash)
 
-# Inject before </body>
+# --- Inject before </body> ---
 if "</body>" in index_text:
     index_text = index_text.replace("</body>", update_script + "\n</body>")
 else:
@@ -183,4 +184,5 @@ if placeholder_path.exists():
         shutil.rmtree(placeholder_path)
 
 output_path.write_text(index_text, encoding="utf-8")
+
 print(f"Wrote {output_path}")
