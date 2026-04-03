@@ -2,6 +2,7 @@ const unblockersPage = {
     id: "unblock",
     title: "unblockers",
     html: `
+    <h1>unblockers</h1>
 <div id="viewer-cli-container">
     <div class="terminal"></div>
     <div class="input-line">
