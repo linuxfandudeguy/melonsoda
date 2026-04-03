@@ -179,64 +179,7 @@ button:hover {
     <img src="data:image/gif;base64,R0lGODlhFAAUAPEAAP///yQgJEBFQAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJDwAAACwAAAAAFAAUAAACSISPqRvtsVKT7EEgggCXyrxNFKiVG9cZEMleooqZ8vm6LQmr121yusoD+YbBnotTPA0hM5nu2BSiEKmDsWoRCasVT8Sa/YoVBQAh+QQJDwAAACwAAAAAFAAUAAACR4SPqRbtsRRE70ngWJoUiC8cIHZVWMYdEMiO6XlWKNcYbctMumyS5A0M6WI8yzB486WKHaIN56TsarBIbVSN+FSvBU8LjhQAACH5BAkPAAAALAAAAAAUABQAAAJIhI+pGO2xFGQzGiiCuK8ln2VLBXhAqKXi5FzoC7EHDJfXqebhbdM5d/PtShWWUAbECW0Hk07FbE6WJCBKMlJyHlmKRdr5ihcFACH5BAkPAAAALAAAAAAUABQAAAJIhI+pGu2xUpPxTCAyuOs+w4GOkZWC6CHPZ4GYCZubu9YjNMf6ifc26yPtThtcsfg7ql67GeWzci5LB5mxtURKLTZKhRv9igEFADs="/>
   </div>
 </div>
-<!-- Main SPA loader -->
-<script>
-const appDiv = document.getElementById('app');
-const navDiv = document.getElementById('nav');
 
-// Build nav from Pages array without innerHTML
-function buildNav() {
-    navDiv.textContent = ''; // Clear previous content
-
-    window.Pages.forEach(page => {
-        const link = document.createElement('a');
-        link.href = '#';
-        link.textContent = page.title;
-        link.dataset.target = page.id;
-
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            renderPage(page.id);
-        });
-
-        navDiv.appendChild(link);
-    });
-}
-
-// Render a page by id without innerHTML
-function renderPage(id) {
-    const page = window.Pages.find(p => p.id === id);
-    if (!page) return;
-
-    appDiv.textContent = ''; // Clear previous content
-
-    // If the page content is a DOM node, append it
-    if (page.html instanceof HTMLElement) {
-        appDiv.appendChild(page.html);
-    } else if (typeof page.html === 'string') {
-        // If it's a string of HTML, parse it safely
-        const template = document.createElement('template');
-        template.innerHTML = page.html.trim();
-
-        Array.from(template.content.childNodes).forEach(node => {
-            appDiv.appendChild(node);
-        });
-    }
-
-    // Attach button listeners inside page content
-    const buttons = appDiv.querySelectorAll('button[data-target]');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', e => {
-            renderPage(btn.dataset.target);
-        });
-    });
-}
-
-// Initialize SPA
-buildNav();
-renderPage('home');
-
-</script>
 <!-- Load JS files for apps -->
 <script>
 const homePage = {
@@ -313,6 +256,64 @@ const gamesPage = {
 
 window.Pages = window.Pages || [];
 window.Pages.push(gamesPage);
+
+</script>
+  <!-- Main SPA loader -->
+<script>
+const appDiv = document.getElementById('app');
+const navDiv = document.getElementById('nav');
+
+// Build nav from Pages array without innerHTML
+function buildNav() {
+    navDiv.textContent = ''; // Clear previous content
+
+    window.Pages.forEach(page => {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.textContent = page.title;
+        link.dataset.target = page.id;
+
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            renderPage(page.id);
+        });
+
+        navDiv.appendChild(link);
+    });
+}
+
+// Render a page by id without innerHTML
+function renderPage(id) {
+    const page = window.Pages.find(p => p.id === id);
+    if (!page) return;
+
+    appDiv.textContent = ''; // Clear previous content
+
+    // If the page content is a DOM node, append it
+    if (page.html instanceof HTMLElement) {
+        appDiv.appendChild(page.html);
+    } else if (typeof page.html === 'string') {
+        // If it's a string of HTML, parse it safely
+        const template = document.createElement('template');
+        template.innerHTML = page.html.trim();
+
+        Array.from(template.content.childNodes).forEach(node => {
+            appDiv.appendChild(node);
+        });
+    }
+
+    // Attach button listeners inside page content
+    const buttons = appDiv.querySelectorAll('button[data-target]');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', e => {
+            renderPage(btn.dataset.target);
+        });
+    });
+}
+
+// Initialize SPA
+buildNav();
+renderPage('home');
 
 </script>
 
