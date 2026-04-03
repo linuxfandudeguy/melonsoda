@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2000s SPA Modular</title>
+<style>
+body {
+  margin:0; padding:0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background:#000 url('https://i.imgur.com/4AiXzf8.jpg') repeat-y center center fixed;
+  background-size: cover;
+  color:#fff; overflow-x:hidden;
+}
+.container { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:50px; transition:all 0.5s ease;}
+nav { position:fixed; top:0; width:100%; background:rgba(0,0,0,0.8); padding:10px 0; display:flex; justify-content:center; gap:20px; z-index:999;}
+nav a { color:#0ff; text-decoration:none; font-weight:bold; transition:0.3s;}
+nav a:hover { color:#ff0; }
+button { font-family:'Comic Sans MS',cursive; background:#0ff; color:#000; border:none; padding:10px 20px; cursor:pointer; margin-top:20px; transition:0.3s;}
+button:hover { background:#ff0; }
+</style>
+</head>
+<body>
+
+<nav id="nav"></nav>
+<div class="container" id="app"></div>
+
+<!-- Snowflakes -->
+<div class="snowflakes">
+  <div class="snowflake"><img src="https://pixelsafari.neocities.org/favicon/nature/star/star38.gif"/></div>
+  <div class="snowflake"><img src="https://pixelsafari.neocities.org/favicon/nature/star/star38.gif"/></div>
+  <div class="snowflake"><img src="https://pixelsafari.neocities.org/favicon/nature/star/star38.gif"/></div>
+  <div class="snowflake"><img src="https://pixelsafari.neocities.org/favicon/nature/star/star38.gif"/></div>
+</div>
+
+<!-- Load JS files for apps -->
+<script src="./js/apps/home.js"></script>
+<script src="./js/apps/about.js"></script>
+<script src="./js/apps/contact.js"></script>
+
+<!-- Main SPA loader -->
+<script src="./js/main.js"></script>
+
+</body>
+</html>
