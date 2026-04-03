@@ -26,4 +26,4 @@ const gamesPage = {
 };
 
 window.Pages = window.Pages || [];
-window.Pages.push(gamesPage);
+window.Pages.push(unblockersPage);
