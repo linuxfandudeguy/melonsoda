@@ -20,7 +20,7 @@ const unblockersPage = {
   m.appendChild(b);
   m.appendChild(f);
   document.body.appendChild(m);
-})()">ubyt by x8rr (youtube)</a>
+})()">viewer-cli (youtube bypass)</a>
       
     `
 };
