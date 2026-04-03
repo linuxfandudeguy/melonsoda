@@ -3,16 +3,19 @@ const gamesPage = {
     title: "games",
     html: `
       <h1>games</h1>
-<a class="game-link" href="https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html" target="_blank" rel="noopener noreferrer">
-    Eaglercraft
+<a href="#" class="game-link"
+   onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html'); return false;">
+  Eaglercraft
 </a>
 
-<a class="game-link" href="https://file.garden/ZtNXqbPCZ1cAh6MT/baldi/index.html" target="_blank" rel="noopener noreferrer">
-    Baldi's Basics
+<a href="#" class="game-link"
+   onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/baldi/index.html'); return false;">
+  Baldi's Basics
 </a>
 
-<a class="game-link" href="https://file.garden/ZtNXqbPCZ1cAh6MT/wbwwb-master/index.html" target="_blank" rel="noopener noreferrer">
-    We Are What We Behold (tw: gore)
+<a href="#" class="game-link"
+   onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/wbwwb-master/index.html'); return false;">
+  We Are What We Behold (tw: gore)
 </a>
 
     <scr` + `ipt>
