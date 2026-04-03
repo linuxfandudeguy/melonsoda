@@ -13,7 +13,6 @@ const unblockersPage = {
   var f=document.createElement('iframe');
   f.style.cssText='width:80%;height:80%;border:none;';
   
-  // ✅ key change: use about:blank
   f.src = "about:blank";
 
   var b=document.createElement('button');
@@ -25,7 +24,6 @@ const unblockersPage = {
   m.appendChild(f);
   document.body.appendChild(m);
 
-  // ✅ write into iframe AFTER it exists
   f.onload = function() {
     var doc = f.contentDocument || f.contentWindow.document;
     doc.open();
