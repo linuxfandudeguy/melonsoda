@@ -2,16 +2,12 @@ const unblockersPage = {
     id: "unblock",
     title: "unblockers",
     html: `
-	<h1>unblockers</h1>
-	<h2>viewer-cli (YouTube)</h2>
- <div id="viewer-cli-container">
+<div id="viewer-cli-container">
     <div class="terminal"></div>
-
     <div class="input-line">
         <div class="prompt">></div>
         <input class="cmd" autocomplete="off">
     </div>
-
     <div class="videos"></div>
 </div>
 
@@ -24,24 +20,20 @@ const unblockersPage = {
     flex-direction: column;
     height: 100%;
 }
-
 #viewer-cli-container .terminal {
     padding: 15px;
     flex: 1;
     overflow-y: auto;
     white-space: pre-wrap;
 }
-
 #viewer-cli-container .input-line {
     display: flex;
     padding: 10px;
     border-top: 1px solid #003322;
 }
-
 #viewer-cli-container .prompt {
     margin-right: 8px;
 }
-
 #viewer-cli-container .cmd {
     flex: 1;
     background: black;
@@ -50,11 +42,9 @@ const unblockersPage = {
     outline: none;
     font-family: monospace;
 }
-
 #viewer-cli-container .videos {
     padding: 10px;
 }
-
 #viewer-cli-container iframe {
     width: 100%;
     height: 300px;
@@ -66,17 +56,17 @@ const unblockersPage = {
 <script>
 (function () {
     const root = document.getElementById("viewer-cli-container");
-
     const term = root.querySelector(".terminal");
     const input = root.querySelector(".cmd");
     const videos = root.querySelector(".videos");
 
     const base = "https://www.youtube-nocookie.com/embed/";
-    const end = "?autoplay=1&rel=0&modestbranding=1";
+    const end = "?autoplay=1&rel=0&modestbranding=1"; // fullscreen allowed
 
-    function log(text, type = "INFO") {
+    function log(text, type) {
+        type = type || "INFO";
         const line = document.createElement("div");
-        line.textContent = "[ " + type + " ] " + text; // 🔧 FIXED (no template literal)
+        line.textContent = "[ " + type + " ] " + text;
         term.appendChild(line);
         term.scrollTop = term.scrollHeight;
     }
@@ -98,12 +88,25 @@ const unblockersPage = {
 
         log("Connecting...", "CONNECT");
 
-        setTimeout(() => {
-            const iframe = document.createElement("iframe");
-            iframe.src = base + id + end;
-            videos.prepend(iframe);
-            log("Playback started", "SUCCESS");
-        }, 500);
+        const iframe = document.createElement("iframe");
+        iframe.src = base + id + end;
+        iframe.allow = "fullscreen; autoplay; encrypted-media; picture-in-picture";
+        iframe.allowFullscreen = true;
+
+        videos.prepend(iframe);
+        log("Playback started", "SUCCESS");
+
+        // ✅ Trigger fullscreen immediately (user gesture)
+        try {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+                log("Fullscreen activated!", "FULLSCREEN");
+            } else {
+                log("Fullscreen not supported by browser", "ERROR");
+            }
+        } catch (err) {
+            log("Fullscreen denied: " + err.message, "ERROR");
+        }
     }
 
     function runCommand(cmd) {
@@ -114,8 +117,9 @@ const unblockersPage = {
         const arg = parts[1];
 
         if (command === "help") {
-            log("load <url>");
-            log("clear");
+            log("Commands:");
+            log("load <url>  - load a YouTube video and go fullscreen");
+            log("clear       - clear terminal");
         } else if (command === "load") {
             if (!arg) {
                 log("Missing URL", "ERROR");
@@ -131,16 +135,15 @@ const unblockersPage = {
 
     input.addEventListener("keydown", function(e) {
         if (e.key === "Enter") {
-            runCommand(input.value.trim());
+            const val = input.value.trim();
+            if (val) runCommand(val);
             input.value = "";
         }
     });
 
     log("viewer-cli initialized", "BOOT");
+    log("type 'help' for commands", "BOOT");
 })();
 </script>
 `
 };
-
-window.Pages = window.Pages || [];
-window.Pages.push(unblockersPage);
