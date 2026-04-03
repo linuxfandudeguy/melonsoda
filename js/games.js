@@ -3,17 +3,7 @@ const gamesPage = {
     title: "games",
     html: `
       <h1>games</h1>
-      <style>
-    .game-link {
-        display: block;
-        margin: 10px 0;
-        color: #00ff88;
-        cursor: pointer;
-        text-decoration: underline;
-        font-family: monospace;
-    }
-    </style>
-
+     
     <div class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html')">
         Eaglercraft
     </div>
