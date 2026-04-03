@@ -1,6 +1,6 @@
 const gamesPage = {
     id: "games",
-    title: "Games",
+    title: "games",
     html: `
       <h1>games</h1>
 
