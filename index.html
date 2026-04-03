@@ -6,6 +6,48 @@
 <title>gamezhub</title>
   <link rel="icon" type="image/gif" href="data:image/gif;base64,R0lGODlhFAAUAPEAAP///yQgJEBFQAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJDwAAACwAAAAAFAAUAAACSISPqRvtsVKT7EEgggCXyrxNFKiVG9cZEMleooqZ8vm6LQmr121yusoD+YbBnotTPA0hM5nu2BSiEKmDsWoRCasVT8Sa/YoVBQAh+QQJDwAAACwAAAAAFAAUAAACR4SPqRbtsRRE70ngWJoUiC8cIHZVWMYdEMiO6XlWKNcYbctMumyS5A0M6WI8yzB486WKHaIN56TsarBIbVSN+FSvBU8LjhQAACH5BAkPAAAALAAAAAAUABQAAAJIhI+pGO2xFGQzGiiCuK8ln2VLBXhAqKXi5FzoC7EHDJfXqebhbdM5d/PtShWWUAbECW0Hk07FbE6WJCBKMlJyHlmKRdr5ihcFACH5BAkPAAAALAAAAAAUABQAAAJIhI+pGu2xUpPxTCAyuOs+w4GOkZWC6CHPZ4GYCZubu9YjNMf6ifc26yPtThtcsfg7ql67GeWzci5LB5mxtURKLTZKhRv9igEFADs=">
 <link rel="stylesheet" href="./style.css">
+  <script>
+(async () => {
+    // URL of the latest version
+    const remoteUrl = 'https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html';
+
+    // Compute SHA-256 hash of a string
+    async function hashString(str) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(str);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(hashBuffer))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    }
+
+    try {
+        // Get hash of the current page's HTML
+        const localHtml = document.documentElement.outerHTML;
+        const localHash = await hashString(localHtml);
+
+        // Fetch latest HTML
+        const response = await fetch(remoteUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Failed to fetch remote HTML.');
+
+        const remoteHtml = await response.text();
+        const remoteHash = await hashString(remoteHtml);
+
+        // Compare hashes
+        if (localHash !== remoteHash) {
+            console.log('Update detected! Replacing page with latest version...');
+            // Replace entire page content with latest HTML
+            document.open();
+            document.write(remoteHtml);
+            document.close();
+        } else {
+            console.log('Already up-to-date.');
+        }
+    } catch (err) {
+        console.error('Update check failed:', err);
+    }
+})();
+</script>
   <link rel="stylesheet" href="./snowflake.css">
 <style>
 #app {
