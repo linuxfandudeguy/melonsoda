@@ -78,48 +78,7 @@ button:hover {
 }
 
 </style>
-  <script>
-(async () => {
-    // URL of the latest version
-    const remoteUrl = 'https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html';
 
-    // Compute SHA-256 hash of a string
-    async function hashString(str) {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(str);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-        return Array.from(new Uint8Array(hashBuffer))
-            .map(b => b.toString(16).padStart(2, '0'))
-            .join('');
-    }
-
-    try {
-        // Get hash of the current page's HTML
-        const localHtml = document.documentElement.outerHTML;
-        const localHash = await hashString(localHtml);
-
-        // Fetch latest HTML
-        const response = await fetch(remoteUrl, { cache: 'no-store' });
-        if (!response.ok) throw new Error('Failed to fetch remote HTML.');
-
-        const remoteHtml = await response.text();
-        const remoteHash = await hashString(remoteHtml);
-
-        // Compare hashes
-        if (localHash !== remoteHash) {
-            console.log('Update detected! Replacing page with latest version...');
-            // Replace entire page content with latest HTML
-            document.open();
-            document.write(remoteHtml);
-            document.close();
-        } else {
-            console.log('Already up-to-date.');
-        }
-    } catch (err) {
-        console.error('Update check failed:', err);
-    }
-})();
-</script>
   <style>
 /* Snowflake fall animation */
 @keyframes snowflakes-fall {
