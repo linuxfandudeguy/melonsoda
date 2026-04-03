@@ -18,6 +18,12 @@ const gamesPage = {
   We Are What We Behold (tw: gore)
 </a>
 
+<a href="#" class="game-link"
+   onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/badtimesimulator/index.html'); return false;">
+  Bad Time Simulator (Sans Fight)
+</a>
+
+
     <scr` + `ipt>
     function launchGame(url) {
         var overlay = document.createElement('div');
