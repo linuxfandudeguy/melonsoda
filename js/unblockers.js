@@ -75,26 +75,19 @@ const unblockersPage = {
 
     function log(text, type = "INFO") {
         const line = document.createElement("div");
-        line.textContent = `[${type}] ${text}`;
+        line.textContent = "[ " + type + " ] " + text; // 🔧 FIXED (no template literal)
         term.appendChild(line);
         term.scrollTop = term.scrollHeight;
     }
 
-    // Scoped console hook (optional: remove if you want global untouched)
-    const oldLog = console.log;
-    console.log = function (...args) {
-        oldLog(...args);
-        log(args.join(" "), "LOG");
-    };
-
     function getYouTubeID(url) {
-        const regExp = /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const regExp = /(?:youtube\\.com\\/(?:watch\\?v=|embed\\/|shorts\\/)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})/;
         const match = url.match(regExp);
         return match ? match[1] : null;
     }
 
     function loadVideo(url) {
-        log("Parsing URL...", "INFO");
+        log("Parsing URL...");
 
         const id = getYouTubeID(url);
         if (!id) {
@@ -102,16 +95,12 @@ const unblockersPage = {
             return;
         }
 
-        log("Connecting to endpoint...", "CONNECT");
+        log("Connecting...", "CONNECT");
 
         setTimeout(() => {
-            log("Fetching stream...", "FETCH");
-
             const iframe = document.createElement("iframe");
             iframe.src = base + id + end;
-
             videos.prepend(iframe);
-
             log("Playback started", "SUCCESS");
         }, 500);
     }
@@ -120,42 +109,33 @@ const unblockersPage = {
         log("> " + cmd, "CMD");
 
         const parts = cmd.split(" ");
-        const baseCmd = parts[0];
+        const command = parts[0];
+        const arg = parts[1];
 
-        switch (baseCmd) {
-            case "help":
-                log("Commands:", "INFO");
-                log("load <url>  - load video", "INFO");
-                log("clear       - clear terminal", "INFO");
-                break;
-
-            case "load":
-                if (!parts[1]) {
-                    log("Missing URL", "ERROR");
-                    return;
-                }
-                loadVideo(parts[1]);
-                break;
-
-            case "clear":
-                term.innerHTML = "";
-                break;
-
-            default:
-                log("Unknown command", "ERROR");
+        if (command === "help") {
+            log("load <url>");
+            log("clear");
+        } else if (command === "load") {
+            if (!arg) {
+                log("Missing URL", "ERROR");
+                return;
+            }
+            loadVideo(arg);
+        } else if (command === "clear") {
+            term.innerHTML = "";
+        } else {
+            log("Unknown command", "ERROR");
         }
     }
 
-    input.addEventListener("keydown", e => {
+    input.addEventListener("keydown", function(e) {
         if (e.key === "Enter") {
-            const value = input.value.trim();
-            if (value) runCommand(value);
+            runCommand(input.value.trim());
             input.value = "";
         }
     });
 
     log("viewer-cli initialized", "BOOT");
-    log("type 'help' for commands", "BOOT");
 })();
 </script>
 `
