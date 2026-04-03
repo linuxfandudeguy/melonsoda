@@ -179,25 +179,6 @@ button:hover {
     <img src="data:image/gif;base64,R0lGODlhFAAUAPEAAP///yQgJEBFQAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJDwAAACwAAAAAFAAUAAACSISPqRvtsVKT7EEgggCXyrxNFKiVG9cZEMleooqZ8vm6LQmr121yusoD+YbBnotTPA0hM5nu2BSiEKmDsWoRCasVT8Sa/YoVBQAh+QQJDwAAACwAAAAAFAAUAAACR4SPqRbtsRRE70ngWJoUiC8cIHZVWMYdEMiO6XlWKNcYbctMumyS5A0M6WI8yzB486WKHaIN56TsarBIbVSN+FSvBU8LjhQAACH5BAkPAAAALAAAAAAUABQAAAJIhI+pGO2xFGQzGiiCuK8ln2VLBXhAqKXi5FzoC7EHDJfXqebhbdM5d/PtShWWUAbECW0Hk07FbE6WJCBKMlJyHlmKRdr5ihcFACH5BAkPAAAALAAAAAAUABQAAAJIhI+pGu2xUpPxTCAyuOs+w4GOkZWC6CHPZ4GYCZubu9YjNMf6ifc26yPtThtcsfg7ql67GeWzci5LB5mxtURKLTZKhRv9igEFADs="/>
   </div>
 </div>
-
-<!-- Load JS files for apps -->
-<script>
-const homePage = {
-    id: "home",
-    title: "home",
-    html: `
-      <h1>gamezhub</h1>
-      <p>a gaming hub that has unblockers, games and so much more lol</p>
-      <br>
-      <span>2026 <a href="https://durokotte.foo.ng">durokotte</a> | <a href="https://github.com/linuxfandudeguy/gamezhub">github</a> | AGPL-3.0</span>
-    `
-};
-window.Pages = window.Pages || [];
-window.Pages.push(homePage);
-
-</script>
-
-
 <!-- Main SPA loader -->
 <script>
 const appDiv = document.getElementById('app');
@@ -256,8 +237,84 @@ buildNav();
 renderPage('home');
 
 </script>
-<footer>
-		
-	</footer>
+<!-- Load JS files for apps -->
+<script>
+const homePage = {
+    id: "home",
+    title: "home",
+    html: `
+      <h1>gamezhub</h1>
+      <p>a gaming hub that has unblockers, games and so much more lol</p>
+      <br>
+      <span>2026 <a href="https://durokotte.foo.ng">durokotte</a> | <a href="https://github.com/linuxfandudeguy/gamezhub">github</a> | AGPL-3.0</span>
+    `
+};
+window.Pages = window.Pages || [];
+window.Pages.push(homePage);
+
+</script>
+<script>
+const gamesPage = {
+    id: "games",
+    title: "Games",
+    html: `
+      <h1>games</h1>
+
+      <!-- Example buttons -->
+      <button onclick="openModal('https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html')">eaglercraft</button>
+      <button onclick="openModal(https://file.garden/ZtNXqbPCZ1cAh6MT/baldi/index.html')">baldi's basics</button>
+
+      <!-- Modal container -->
+      <div id="gameModal" style="
+          display:none;
+          position:fixed;
+          top:0; left:0;
+          width:100%; height:100%;
+          background: rgba(0,0,0,0.7);
+          justify-content:center;
+          align-items:center;
+          z-index:9999;
+      ">
+        <div style="
+            position:relative;
+            width:80%; height:80%;
+            background:#fff;
+            border-radius:10px;
+            overflow:hidden;
+        ">
+          <button id="closeModal" style="
+              position:absolute;
+              top:10px; right:10px;
+              z-index:10;
+              padding:5px 10px;
+              cursor:pointer;
+          ">Close</button>
+          <iframe id="modalIframe" src="" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+      </div>
+
+      <script>
+        function openModal(url) {
+            const modal = document.getElementById('gameModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = url;
+            modal.style.display = 'flex';
+        }
+
+        document.getElementById('closeModal').onclick = function() {
+            const modal = document.getElementById('gameModal');
+            const iframe = document.getElementById('modalIframe');
+            iframe.src = '';
+            modal.style.display = 'none';
+        };
+      </script>
+    `
+};
+
+window.Pages = window.Pages || [];
+window.Pages.push(gamesPage);
+
+</script>
+
 </body>
 </html>
