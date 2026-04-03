@@ -22,8 +22,8 @@ const unblockersPage = {
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
     ></iframe>
 </div> 
-};
 `
+};
 
 window.Pages = window.Pages || [];
 window.Pages.push(unblockersPage);
