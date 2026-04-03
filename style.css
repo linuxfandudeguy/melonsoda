@@ -1,7 +1,7 @@
 /* Custom Font */
 @font-face {
   font-family: "thisisafont";
-  src: url("assets/Web437_NEC_APC3_8x16.woff") format("woff");
+  src: url("./Web437_NEC_APC3_8x16.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
