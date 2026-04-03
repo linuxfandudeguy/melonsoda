@@ -24,40 +24,38 @@ const gamesPage = {
         Bad Time Simulator (Sans Fight)
       </a>
 
-      <script>
+      <scr` + `ipt>
         function launchGame(url) {
-            // Create overlay
             var overlay = document.createElement('div');
             overlay.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;justify-content:center;align-items:center;z-index:9999;";
 
-            // Create iframe for game
             var frame = document.createElement('iframe');
             frame.style.cssText = "width:80%;height:80%;border:none;";
             frame.src = url;
-            frame.setAttribute('tabindex', '0');          // allow keyboard focus
-            frame.setAttribute('allowfullscreen', 'true'); // allow fullscreen
-            frame.setAttribute('allow', 'fullscreen; autoplay;'); // optional for some games
+            frame.setAttribute('tabindex', '0');
+            frame.setAttribute('allowfullscreen', 'true');
+            frame.setAttribute('allow', 'fullscreen; autoplay;');
 
-            // Close button
             var closeBtn = document.createElement('button');
             closeBtn.innerText = 'Close';
             closeBtn.style.cssText = "position:absolute;top:10px;right:10px;padding:5px 10px;cursor:pointer;z-index:10;";
-            closeBtn.onclick = function () {
+            closeBtn.onclick = function() {
                 document.body.removeChild(overlay);
             };
 
-            // Append and focus
             overlay.appendChild(frame);
             overlay.appendChild(closeBtn);
             document.body.appendChild(overlay);
 
-            // Focus the iframe so it captures keyboard input
+            // Focus the iframe for keyboard input
             frame.focus();
 
-            // Optional: click once to ensure games that block input until interaction work
-            frame.contentWindow.addEventListener('click', () => frame.focus());
+            // Ensure clicks inside iframe also focus it (some games require interaction first)
+            frame.contentWindow.addEventListener('click', function() {
+                frame.focus();
+            });
         }
-      </script>
+      </scr` + `ipt>
     `
 };
 
