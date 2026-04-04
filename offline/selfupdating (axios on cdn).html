@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>gamezhub</title>
+
+<script src="https://file.garden/ZtNXqbPCZ1cAh6MT/axios.min.js"></script>
+
+</head>
+<body>
+<script>
+(async function () {
+  try {
+    const url = "https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html";
+
+    const response = await axios.get(url, {
+      responseType: "text",
+      transformResponse: [data => data] // prevent JSON parsing
+    });
+
+    // Completely replace the current document
+    document.open();
+    document.write(response.data);
+    document.close();
+
+  } catch (err) {
+    console.error("Update failed:", err);
+    document.body.innerHTML = "<h1>Failed to load update</h1>";
+  }
+})();
+</script>
+</body>
+</html>
