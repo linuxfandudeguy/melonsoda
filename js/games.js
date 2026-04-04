@@ -30,6 +30,10 @@ const gamesPage = {
     Happy Wheels (tw: extreme gore)
     </a>
 
+    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html'); return false;">
+multi-console game emulator    
+</a>
+
 
     <scr` + `ipt>
       let currentOverlay = null;
