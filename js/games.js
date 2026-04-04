@@ -31,14 +31,17 @@ const gamesPage = {
     </a>
 
     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html'); return false;">
-multi-console game emulator    
+Multi-console game emulator    
 </a>
 
     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html?rom=Scribblenauts%20Collection%20(USA).nds'); return false;">
 Scribblenauts/Super Scribblenauts  
 </a>
 
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html?rom=Street%20Fighter%20II%20(Japan).sfc'); return false;">
+Street Fighter II: The World Warrior (Japan)
 
+</a>
 
     <scr` + `ipt>
       let currentOverlay = null;
