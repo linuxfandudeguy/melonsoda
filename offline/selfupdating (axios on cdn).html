@@ -1,33 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>gamezhub</title>
-
-<script src="https://file.garden/ZtNXqbPCZ1cAh6MT/axios.min.js"></script>
-
-</head>
-<body>
+<meta charset="UTF-8">
+<title>gamezhub</title>
 <script>
-(async function () {
+// have a list of cdns on hold
+(async function() {
+  const axiosCDNs = [
+    "https://file.garden/ZtNXqbPCZ1cAh6MT/axios.min.js",
+    "https://cdn.jsdelivr.net/npm/axios@1.14.0/dist/axios.min.js",
+    "https://unpkg.com/axios@1.14.0/dist/axios.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/axios/1.14.0/axios.min.js",
+    "https://esm.sh/axios@1.14.0",
+    "https://cdn.skypack.dev/pin/axios@v1.14.0-M6MvqYWpz43BoC8jznR8/mode=imports,min/optimized/axios.js",
+    "https://ga.jspm.io/npm:axios@1.14.0/index.js",
+    "https://rawcdn.githack.com/linuxfandudeguy/cdn-4xe3/864214fee4be01061108a9210846113a1decb7bd/axios.min.js",
+    "https://raw.githubusercontent.com/linuxfandudeguy/cdn-4xe3/refs/heads/main/axios.min.js",
+    "https://cdn.statically.io/gh/linuxfandudeguy/cdn-4xe3@864214fee4be01061108a9210846113a1decb7bd/axios.min.js",
+    "https://files.catbox.moe/08cks8.js"
+  ];
+
+  async function loadAxios(urls) {
+    for (const url of urls) {
+      try {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = url;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+        if (window.axios) {
+          console.log("Axios loaded from:", url);
+          return window.axios; // assign to 'a' later
+        }
+      } catch (e) {
+        console.warn("Failed to load Axios from:", url);
+      }
+    }
+    console.warn("Falling back to fetch");
+    return null;
+  }
+
+  const a = await loadAxios(axiosCDNs); // 'a' is Axios or null
+
+  const targetUrl = "https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html";
+
   try {
-    const url = "https://raw.githubusercontent.com/linuxfandudeguy/gamezhub/refs/heads/main/offline/index.html";
+    let html;
+    if (a) {
+      const response = await a.get(targetUrl, {
+        responseType: "text",
+        transformResponse: [data => data]
+      });
+      html = response.data;
+    } else {
+      const response = await fetch(targetUrl);
+      html = await response.text();
+    }
 
-    const response = await axios.get(url, {
-      responseType: "text",
-      transformResponse: [data => data] // prevent JSON parsing
-    });
-
-    // Completely replace the current document
     document.open();
-    document.write(response.data);
+    document.write(html);
     document.close();
-
   } catch (err) {
     console.error("Update failed:", err);
     document.body.innerHTML = "<h1>Failed to load update</h1>";
   }
 })();
 </script>
+</head>
+<body>
 </body>
 </html>
