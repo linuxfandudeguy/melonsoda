@@ -26,6 +26,10 @@ const gamesPage = {
     DOOM (tw: gore)
     </a>
 
+     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/flash/html/HappyWheels.html'); return false;">
+    Happy Wheels (tw: extreme gore)
+    </a>
+
 
     <scr` + `ipt>
       let currentOverlay = null;
