@@ -48,22 +48,7 @@ Friday Night Funkin (Macromedia Flash ver.)
 
 </a>
 
- <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/yumenikki-master/yumenikki-master/index.html'); return false;">
- ゆめにっき 
-</a>
-<details>
-  <summary>trigger warnings for ゆめにっき</summary>
-  <ul>
-    <li>violence & sh imagery</li>
-    <li>disturbing/horror atmosphere</li>
-    <li>psychological unease</li>
-    <li>suggestive or creepy body imagery</li>
-    <li>seizure / flashing lights</li>
-    <li>implied trauma or symbolic distress</li>
-    <li>dark dreams and unsettling symbolic content</li>
-  </ul>
-</details><br>
-<small> note for ゆめにっき: some files might be missing, i dont know which but<br> i know this because the cdn i used said it could not upload a file<br> due to it having a file extension that is commonly abused in malware. the game itself is safe.</small>
+ 
     <scr` + `ipt>
       let currentOverlay = null;
       let currentFrame = null;
