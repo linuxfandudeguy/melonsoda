@@ -63,7 +63,7 @@ Friday Night Funkin (Macromedia Flash ver.)
     <li>dark dreams and unsettling symbolic content</li>
   </ul>
 </details><br>
-<small> note for ゆめにっき: some files might be missing, i dont know which but<br> i know this because the cdn i used said it could not upload a file due to it having a file extension that is commonly abused in malware. the game itself is safe.</small>
+<small> note for ゆめにっき: some files might be missing, i dont know which but<br> i know this because the cdn i used said it could not upload a file<br> due to it having a file extension that is commonly abused in malware. the game itself is safe.</small>
     <scr` + `ipt>
       let currentOverlay = null;
       let currentFrame = null;
