@@ -3,14 +3,17 @@ const toolsPage = {
   title: "fun",
   html: `
     <h1>Fun Stuff</h1>
-<p>this is fun things that arent video games</p>
+<p>these are fun things that arent video games</p>
     
     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/apps/thirtydollarwebsite/index.html'); return false;">
 Thirty Dollar Website
 </a>
 <br>
 <small>note: a lot of the images on thirty dollar website are <br> missing due to the cdn that i am using placing csp restrictions <br> on websites outside of the cdn, thankfully the audio is not blocked </small>
-
+<br>
+    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/apps/fluidsim/index.html'); return false;">
+WebGL Fluids
+</a>
   
     
  
