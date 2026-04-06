@@ -3,7 +3,11 @@
     "https://durokotte.foo.ng/melonsoda/index.html",
     "https://durokotte.foo.ng/melonsoda/",
     "https://meronsooda.netlify.app/",
-    "https://raw.githack.com/linuxfandudeguy/melonsoda/main/index.html"
+    "https://raw.githack.com/linuxfandudeguy/melonsoda/main/index.html",
+    "https://raw.githack.com/linuxfandudeguy/melonsoda/main/",
+    "https://learn-french-easy.wasmer.app/",
+    "https://learn-french-easy.wasmer.app/index.html"
+
   ];
 
   // === NORMALIZE FUNCTION ===
