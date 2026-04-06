@@ -66,8 +66,10 @@ Raldi's Crackhouse (tw: profanity, mention of drugs and edgy humor)</a>
 Gacha Life</a>
  
  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/Project%20Sekai%20-%20%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%BB%E3%82%AB%E3%82%A4/index.html'); return false;">
-Project Sekai (not the real deal, its a  <a href="https://scratch.mit.edu" >
-scratch</a> port and it only has 24 songs)</a>
+Project Sekai (not the real deal, its a scratch port and it only has 24 songs)</a>
+
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/stickmandestruction/index.html'); return false;">
+Project Sekai (not the real deal, its a scratch port and it only has 24 songs)</a>
 
     <scr` + `ipt>
       let currentOverlay = null;
