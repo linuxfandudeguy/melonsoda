@@ -19,7 +19,7 @@ here’s a single table with all files in the folder:
 | selfupdating (axios on cdn).html | self-updating version using multiple cdn fallbacks for axios             | smaller file size<br>cdn redundancy (tries multiple sources)<br>faster load if cdn works | depends on external cdns<br>some cdns may fail<br>requires internet connection                  |  [selfupdating (axios on cdn).html](https://raw.githubusercontent.com/linuxfandudeguy/melonsoda/refs/heads/main/offline/selfupdating%20(axios%20on%20cdn).html)          |
 | selfupdating-protected.html      | self-updating version with password protection (**password: homeworksucks**) | restricts access from admins/teachers<br>still updates dynamically                    | uses unminified axios (large size)<br>viewer-cli does not work<br> | [selfupdating-protected.html](https://raw.githubusercontent.com/linuxfandudeguy/melonsoda/refs/heads/main/offline/selfupdating-protected.html) |
 
-## offical urls
+## official urls
  1. https://durokotte.foo.ng/melonsoda/index.html
  2. https://meronsooda.netlify.app/
  3. https://raw.githack.com/linuxfandudeguy/melonsoda/main/index.html (not hosted by me but i use it too so it passes)
