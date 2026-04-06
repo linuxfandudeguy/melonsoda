@@ -23,7 +23,7 @@
   // normalize whitelist once
   const normalizedList = officialUrls.map(normalize);
 
-  // === GET CURRENT URL (with Google Sites logic) ===
+  // === GET CURRENT URL ===
   function getCurrentBaseURL() {
     const u = new URL(window.location.href);
 
