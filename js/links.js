@@ -6,7 +6,7 @@ const linksPage = {
     <div id="official-urls-list" style="display:flex;flex-direction:column;gap:10px;"></div>
 
     <scr`+`ipt>
-      const container = document.getElementById('official-urls-list');
+      let container = document.getElementById('official-urls-list');
 
       if (window.officialUrls && Array.isArray(window.officialUrls)) {
         window.officialUrls.forEach(obj => {
