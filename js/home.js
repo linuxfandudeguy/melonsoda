@@ -11,37 +11,37 @@ const homePage = {
     
 
     const quoteElement = document.getElementById('quote');
-    const typingSpeed = 50;   // fast typing
-    const deletingSpeed = 25; // fast deleting
-    const pauseTime = 1000;   // 1 second pause
+const typingSpeed = 50;   // fast typing
+const deletingSpeed = 25; // fast deleting
+const pauseTime = 1000;   // 1 second pause
 
-    let index = 0;
+let index = 0;
 
-    async function typeQuote(quote) {
-      for (let i = 0; i <= quote.length; i++) {
-        quoteElement.textContent = quote.substring(0, i);
-        await new Promise(r => setTimeout(r, typingSpeed));
-      }
-    }
+async function typeQuote(quote) {
+  for (let i = 0; i <= quote.length; i++) {
+    quoteElement.textContent = quote.substring(0, i);
+    await new Promise(r => setTimeout(r, typingSpeed));
+  }
+}
 
-    async function deleteQuote() {
-      const text = quoteElement.textContent;
-      for (let i = text.length; i >= 0; i--) {
-        quoteElement.textContent = text.substring(0, i);
-        await new Promise(r => setTimeout(r, deletingSpeed));
-      }
-    }
+async function deleteQuote() {
+  const text = quoteElement.textContent;
+  for (let i = text.length; i >= 0; i--) {
+    quoteElement.textContent = text.substring(0, i);
+    await new Promise(r => setTimeout(r, deletingSpeed));
+  }
+}
 
-    async function cycleQuotes() {
-      while (true) {
-        await typeQuote(quotes[index]);
-        await new Promise(r => setTimeout(r, pauseTime));
-        await deleteQuote();
-        index = (index + 1) % quotes.length; // loop back to first quote
-      }
-    }
+async function cycleQuotes() {
+  while (true) {
+    await typeQuote(window.quotes[index]);         // use window.quotes
+    await new Promise(r => setTimeout(r, pauseTime));
+    await deleteQuote();
+    index = (index + 1) % window.quotes.length;   // loop using window.quotes
+  }
+}
 
-    cycleQuotes();
+cycleQuotes();
   </scr`+`ipt>
       <br>
       <a href="javascript:(function(){
