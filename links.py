@@ -14,23 +14,21 @@ os.makedirs(output_dir, exist_ok=True)
 with open(yaml_file, "r", encoding="utf-8") as f:
     data = yaml.safe_load(f)
 
-# Build plain text links from YAML
-links_text = ""
+# Build HTML links from YAML
+links_html = ""
 for entry in data:
     name = entry.get("name", "link")
     url = entry.get("url", "#")
     comment = entry.get("comment", "")
-    if comment:
-        links_text += f"{name}: {url} ({comment})\n"
-    else:
-        links_text += f"{name}: {url}\n"
+    links_html += f'<a href="{url}" target="_blank">{name}</a> {comment}<br>\n'
 
-# JS template with plain text
+# JS template with HTML embedded
 js_template = f"""const linksPage = {{
     id: "link",
     title: "link",
-    text: `
-{links_text}`
+    html: `
+<h1>Links</h1>
+{links_html}`
 }};
 window.Pages = window.Pages || [];
 window.Pages.push(linksPage);
@@ -42,8 +40,8 @@ with open(output_file, "w", encoding="utf-8") as f:
 
 print(f"links.js generated at {output_file}")
 
-# Append plain text links to README.md
-readme_append_content = "\n\n## Links\n\n" + links_text
+# Append HTML links to README.md
+readme_append_content = "\n\n## Links\n\n" + links_html
 with open(readme_file, "a", encoding="utf-8") as f:
     f.write(readme_append_content)
 
