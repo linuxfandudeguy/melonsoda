@@ -27,7 +27,7 @@ js_template = f"""const linksPage = {{
     id: "link",
     title: "link",
     html: `
-<h1>Links</h1>
+<h1>links</h1>
 {links_html}`
 }};
 window.Pages = window.Pages || [];
