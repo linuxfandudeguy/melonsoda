@@ -6,7 +6,10 @@
     { url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/", comment: "not hosted by me but i personally use it so is passes" },
     { url: "https://learn-french-easy.wasmer.app/", comment: "you can learn some very nice french words like le cul" },
     { url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/", comment: "omg algebra tutoring!1!1!11" },
+    { url: "https://educational-algebra-study-tutor.edgeone.app/", comment: "had to use the sketchy tencent edge service as that wasn't blocked " },
     { url: "https://k12-resources-for-french.koshlandjg105.workers.dev/", comment: "french resources 100% real" }
+  
+
   ];
 
   window.expandedUrls = window.officialUrls.flatMap(obj => [
