@@ -8,7 +8,7 @@ const homePage = {
       <p>a gaming hub that has unblockers, games and so much more lol</p>
 
   <scr`+`ipt>
-    const quotes = [
+    let quotes = [
       "refrigerator refrigerator do you have any saOWses",
       "NO CHICK-FIL-A SAUSE?!?!?!?!!?!?!",
       "eggs are the better species",
