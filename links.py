@@ -20,7 +20,7 @@ for entry in data:
     name = entry.get("name", "link")
     url = entry.get("url", "#")
     comment = entry.get("comment", "")
-    links_html += f'<a href="{url}" target="_blank">{name}</a> - {comment}<br>\n'
+    links_html += f'<a href="{url}" target="_blank">{name}</a> {comment}<br>\n'
 
 # JS template
 js_template = f"""const linksPage = {{
