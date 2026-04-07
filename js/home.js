@@ -10,39 +10,54 @@ const homePage = {
   <scr`+`ipt>
     
 
-    const quoteElement = document.getElementById('quote');
-const typingSpeed = 50;   // fast typing
-const deletingSpeed = 25; // fast deleting
-const pauseTime = 1000;   // 1 second pause
+    const typingSpeed = 50;   // milliseconds per character
+  const deletingSpeed = 25; // milliseconds per character
+  const pauseTime = 1000;   // pause after full quote
 
-let index = 0;
+  let index = 0;
+  let typingActive = false; // ensures only one loop runs
 
-async function typeQuote(quote) {
-  for (let i = 0; i <= quote.length; i++) {
-    quoteElement.textContent = quote.substring(0, i);
-    await new Promise(r => setTimeout(r, typingSpeed));
+  // Type a single string
+  async function typeQuote(str, element) {
+    for (let i = 0; i <= str.length; i++) {
+      element.textContent = str.slice(0, i);
+      await new Promise(r => setTimeout(r, typingSpeed));
+    }
   }
-}
 
-async function deleteQuote() {
-  const text = quoteElement.textContent;
-  for (let i = text.length; i >= 0; i--) {
-    quoteElement.textContent = text.substring(0, i);
-    await new Promise(r => setTimeout(r, deletingSpeed));
+  // Delete the string
+  async function deleteQuote(element) {
+    const str = element.textContent;
+    for (let i = str.length; i >= 0; i--) {
+      element.textContent = str.slice(0, i);
+      await new Promise(r => setTimeout(r, deletingSpeed));
+    }
   }
-}
 
-async function cycleQuotes() {
-  while (true) {
-    await typeQuote(window.quotes[index]);         // use window.quotes
-    await new Promise(r => setTimeout(r, pauseTime));
-    await deleteQuote();
-    index = (index + 1) % window.quotes.length;   // loop using window.quotes
+  // Main loop: cycles quotes indefinitely
+  async function cycleQuotes() {
+    if (typingActive) return; // prevent duplicate loops
+    typingActive = true;
+
+    while (true) {
+      const element = document.getElementById('quote');
+      if (!element) {
+        // wait until the element exists in the DOM
+        await new Promise(r => setTimeout(r, 200));
+        continue;
+      }
+
+      const currentQuote = window.quotes[index];
+      await typeQuote(currentQuote, element);
+      await new Promise(r => setTimeout(r, pauseTime));
+      await deleteQuote(element);
+
+      index = (index + 1) % window.quotes.length;
+    }
   }
-}
 
-cycleQuotes();
-  </scr`+`ipt>
+  cycleQuotes(); // start the typing effect
+</scr`+`ipt>
       <br>
       <a href="javascript:(function(){
   document.title='Google';
