@@ -20,11 +20,11 @@
 
 - name: "very not sketchy edgeone deploy"
   url: "https://educational-algebra-study-tutor.edgeone.app/"
-  comment: "had to use the sketchy tencent edge service as that wasn't blocked"
+  comment: "had to use the sketchy tencent edge service as that wasn't blocked (selfupdating.html only)"
 
 - name: "firebase classic"
   url: "https://free-french-resources.web.app/"
-  comment: "firebase deploy"
+  comment: "firebase deploy (index page does not update but selfupdating.html updates)"
 
 - name: "firebase alt route"
   url: "https://free-french-resources.firebaseapp.com/"
