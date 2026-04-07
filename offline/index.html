@@ -589,19 +589,20 @@ window.Pages.push(toolsPage);
 </script>
 
 <script>
-(function () {
-  const officialUrls = [
-    { url: "https://durokotte.foo.ng/melonsoda/", comment: "this is the main page bro" },
-    { url: "https://meronsooda.netlify.app/", comment: "netlify is probably already blocked but i added this one just in case" },
-    { url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/", comment: "not hosted by me but i personally use it so " },
-    { url: "https://learn-french-easy.wasmer.app/", comment: " learn french here!1!1! (actually a wasmer mirror)" },
-    { url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/", comment: "Free K12 Algebra tutoring resources 100% real no fake ( its a Cloudflare Pages mirror)" },
-    { url: "https://k12-resources-for-french.koshlandjg105.workers.dev/", comment: "omg real k12 resources for french?!?! (i accidently deployed this one trying<br>to deploy to pages but this is a Cloudflare Workers mirror)" }
+(function() {
+
+  window.officialUrls = [
+    { url: "https://durokotte.foo.ng/melonsoda/", comment: "Main melonsoda page" },
+    { url: "https://meronsooda.netlify.app/", comment: "Netlify main site" },
+    { url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/", comment: "GitHack version" },
+    { url: "https://learn-french-easy.wasmer.app/", comment: "French learning site" },
+    { url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/", comment: "Algebra tutoring main" },
+    { url: "https://k12-resources-for-french.koshlandjg105.workers.dev/", comment: "French resources main" }
   ];
 
-  const expandedUrls = officialUrls.flatMap(obj => [
+  window.expandedUrls = window.officialUrls.flatMap(obj => [
     { url: obj.url, comment: obj.comment },
-    { url: obj.url + "index.html", comment: obj.comment } 
+    { url: obj.url + "index.html", comment: obj.comment }
   ]);
 
   // === NORMALIZE FUNCTION ===
@@ -614,29 +615,24 @@ window.Pages.push(toolsPage);
     }
   }
 
-  const normalizedList = expandedUrls.map(obj => ({
+  // Normalized list globally accessible
+  window.normalizedList = window.expandedUrls.map(obj => ({
     url: normalize(obj.url),
     comment: obj.comment
   }));
 
-  // === GET CURRENT URL ===
-  function getCurrentBaseURL() {
-    const u = new URL(window.location.href);
+  // === GLOBAL FUNCTION ===
+  window.checkOfficialURL = function(url) {
+    const normalized = normalize(url);
+    const match = window.normalizedList.find(obj => obj.url === normalized);
+    return match
+      ? { official: true, comment: match.comment, url: match.url }
+      : { official: false, comment: null, url: normalized };
+  };
 
-    if (u.hostname === "sites.google.com") {
-      const parts = u.pathname.split("/").filter(Boolean);
-      if (parts[0] === "view") {
-        return u.origin + "/" + parts.slice(0, 2).join("/");
-      }
-    }
-
-    return u.origin + u.pathname.replace(/\/$/, "");
-  }
-
-  const current = getCurrentBaseURL();
-
-  // === MATCH ===
-  const match = normalizedList.find(obj => obj.url === current);
+  // === POPUP FUNCTION ===
+  const current = window.location.href;
+  const result = window.checkOfficialURL(current);
 
   // === CREATE STYLE ===
   const style = document.createElement("style");
@@ -682,18 +678,18 @@ window.Pages.push(toolsPage);
   document.body.appendChild(popup);
 
   // === SET MESSAGE ===
-  if (match) {
+  if (result.official) {
     popup.className = "official";
-    text.textContent = "✅ this is an official melonsoda URL"; 
+    text.textContent = "✅ this is an official melonsoda URL";
   } else {
     popup.className = "unofficial";
     text.textContent = "⚠️ this is either NOT an official melonsoda URL or one of the singlefiles";
   }
 
-  // === SHOW ===
+  // === SHOW POPUP ===
   setTimeout(() => popup.classList.add("show"), 10);
 
-  // === CLOSE ===
+  // === CLOSE FUNCTION ===
   function closePopup() {
     popup.classList.remove("show");
     popup.classList.add("hide");
@@ -705,6 +701,7 @@ window.Pages.push(toolsPage);
 
   button.onclick = closePopup;
   setTimeout(closePopup, 5000);
+
 })();
 
 </script>
