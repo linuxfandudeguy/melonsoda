@@ -11,7 +11,6 @@ const linksPage = {
 <a href="https://educational-algebra-study-tutor.edgeone.app/" target="_blank">very not sketchy edgeone deploy</a> had to use the sketchy tencent edge service as that wasn't blocked (selfupdating.html only)<br>
 <a href="https://free-french-resources.web.app/" target="_blank">firebase classic</a> firebase deploy (index page does not update but selfupdating.html updates)<br>
 <a href="https://free-french-resources.firebaseapp.com/" target="_blank">firebase alt route</a> alternate firebase deploy<br>
-<a href="https://k12-resources-for-french.koshlandjg105.workers.dev/" target="_blank">workers dev (accidently deployed this lol)</a> french resources 100% real<br>
 `
 };
 window.Pages = window.Pages || [];
