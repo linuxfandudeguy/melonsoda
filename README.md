@@ -19,3 +19,11 @@ here’s a single table with all files in the folder:
 | selfupdating (axios on cdn).html | self-updating version using multiple cdn fallbacks for axios             | smaller file size<br>cdn redundancy (tries multiple sources)<br>faster load if cdn works | depends on external cdns<br>some cdns may fail<br>requires internet connection                  |  [selfupdating (axios on cdn).html](https://raw.githubusercontent.com/linuxfandudeguy/melonsoda/refs/heads/main/offline/selfupdating%20(axios%20on%20cdn).html)          |
 | selfupdating-protected.html      | self-updating version with password protection (**password: homeworksucks**) | restricts access from admins/teachers<br>still updates dynamically                    | uses unminified axios (large size)<br>viewer-cli does not work<br> | [selfupdating-protected.html](https://raw.githubusercontent.com/linuxfandudeguy/melonsoda/refs/heads/main/offline/selfupdating-protected.html) |
 
+
+## official urls
+1. [https://durokotte.foo.ng/melonsoda](https://durokotte.foo.ng/melonsoda)
+2. [https://meronsooda.netlify.app](https://meronsooda.netlify.app)
+3. [https://raw.githack.com/linuxfandudeguy/melonsoda/main](https://raw.githack.com/linuxfandudeguy/melonsoda/main) (not hosted by me but i personally use it so it passes)
+4. [https://learn-french-easy.wasmer.app](https://learn-french-easy.wasmer.app)
+5. [https://k12-algebra-tutoring-edu-us-resources.pages.dev](https://k12-algebra-tutoring-edu-us-resources.pages.dev)
+6. [https://k12-resources-for-french.koshlandjg105.workers.dev](https://k12-resources-for-french.koshlandjg105.workers.dev)
