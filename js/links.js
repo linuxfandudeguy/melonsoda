@@ -1,6 +1,6 @@
 const linksPage = {
     id: "link",
-    title: "link",
+    title: "links",
     html: `
 <h1>links</h1>
 <a href="https://durokotte.foo.ng/melonsoda/" target="_blank">the main melon</a> this is the main page<br>
