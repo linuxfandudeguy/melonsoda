@@ -591,19 +591,18 @@ window.Pages.push(toolsPage);
 <script>
 (function () {
   const officialUrls = [
-    "https://durokotte.foo.ng/melonsoda/index.html",
-    "https://durokotte.foo.ng/melonsoda/",
-    "https://meronsooda.netlify.app/",
-    "https://meronsooda.netlify.app/index.html",
-    "https://raw.githack.com/linuxfandudeguy/melonsoda/main/index.html",
-    "https://raw.githack.com/linuxfandudeguy/melonsoda/main/",
-    "https://learn-french-easy.wasmer.app/",
-    "https://learn-french-easy.wasmer.app/index.html",
-    "https://k12-algebra-tutoring-edu-us-resources.pages.dev/",
-    "https://k12-algebra-tutoring-edu-us-resources.pages.dev/index.html",
-    "https://k12-resources-for-french.koshlandjg105.workers.dev/",
-    "https://k12-resources-for-french.koshlandjg105.workers.dev/index.html"
+    { url: "https://durokotte.foo.ng/melonsoda/", comment: "this is the main page bro" },
+    { url: "https://meronsooda.netlify.app/", comment: "netlify is probably already blocked but i added this one just in case" },
+    { url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/", comment: "not hosted by me but i personally use it so " },
+    { url: "https://learn-french-easy.wasmer.app/", comment: " learn french here!1!1! (actually a wasmer mirror)" },
+    { url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/", comment: "Free K12 Algebra tutoring resources 100% real no fake ( its a Cloudflare Pages mirror)" },
+    { url: "https://k12-resources-for-french.koshlandjg105.workers.dev/", comment: "omg real k12 resources for french?!?! (i accidently deployed this one trying<br>to deploy to pages but this is a Cloudflare Workers mirror)" }
   ];
+
+  const expandedUrls = officialUrls.flatMap(obj => [
+    { url: obj.url, comment: obj.comment },
+    { url: obj.url + "index.html", comment: obj.comment } 
+  ]);
 
   // === NORMALIZE FUNCTION ===
   function normalize(url) {
@@ -615,30 +614,29 @@ window.Pages.push(toolsPage);
     }
   }
 
-  // normalize whitelist once
-  const normalizedList = officialUrls.map(normalize);
+  const normalizedList = expandedUrls.map(obj => ({
+    url: normalize(obj.url),
+    comment: obj.comment
+  }));
 
   // === GET CURRENT URL ===
   function getCurrentBaseURL() {
     const u = new URL(window.location.href);
 
-    // detect Google Sites pages
     if (u.hostname === "sites.google.com") {
-      const parts = u.pathname.split("/").filter(Boolean); // ["view", "sitename", ...]
+      const parts = u.pathname.split("/").filter(Boolean);
       if (parts[0] === "view") {
-        // reconstruct base site URL: https://sites.google.com/view/sitename
         return u.origin + "/" + parts.slice(0, 2).join("/");
       }
     }
 
-    // fallback: normal page
     return u.origin + u.pathname.replace(/\/$/, "");
   }
 
   const current = getCurrentBaseURL();
 
   // === MATCH ===
-  const isOfficial = normalizedList.includes(current);
+  const match = normalizedList.find(obj => obj.url === current);
 
   // === CREATE STYLE ===
   const style = document.createElement("style");
@@ -684,9 +682,9 @@ window.Pages.push(toolsPage);
   document.body.appendChild(popup);
 
   // === SET MESSAGE ===
-  if (isOfficial) {
+  if (match) {
     popup.className = "official";
-    text.textContent = "✅ this is an official melonsoda URL";
+    text.textContent = "✅ this is an official melonsoda URL"; 
   } else {
     popup.className = "unofficial";
     text.textContent = "⚠️ this is either NOT an official melonsoda URL or one of the singlefiles";
@@ -706,8 +704,6 @@ window.Pages.push(toolsPage);
   }
 
   button.onclick = closePopup;
-
-  // auto close
   setTimeout(closePopup, 5000);
 })();
 
