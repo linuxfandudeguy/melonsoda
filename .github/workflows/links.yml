@@ -36,10 +36,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add js/links.js README.md
+          
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "Update links.js and README.md [skip ci]"
-            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY} HEAD:${GITHUB_REF}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF: ${{ github.ref }}
