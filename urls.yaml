@@ -1,26 +1,35 @@
-- url: "https://durokotte.foo.ng/melonsoda/"
+- name: "the main melon"
+  url: "https://durokotte.foo.ng/melonsoda/"
   comment: "this is the main page"
 
-- url: "https://meronsooda.netlify.app/"
+- name: "netlify melon"
+  url: "https://meronsooda.netlify.app/"
   comment: "netlify mirror"
 
-- url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/"
+- name: "totally legit githack"
+  url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/"
   comment: "not hosted by me but i personally use it so it passes"
 
-- url: "https://learn-french-easy.wasmer.app/"
+- name: "f r e n c h"
+  url: "https://learn-french-easy.wasmer.app/"
   comment: "you can learn some very nice french words like le cul"
 
-- url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/"
+- name: "totally real algebra help"
+  url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/"
   comment: "omg algebra tutoring!1!1!11"
 
-- url: "https://educational-algebra-study-tutor.edgeone.app/"
+- name: "very not sketchy edgeone deploy"
+  url: "https://educational-algebra-study-tutor.edgeone.app/"
   comment: "had to use the sketchy tencent edge service as that wasn't blocked"
 
-- url: "https://free-french-resources.web.app/"
+- name: "firebase classic"
+  url: "https://free-french-resources.web.app/"
   comment: "firebase deploy"
 
-- url: "https://free-french-resources.firebaseapp.com/"
+- name: "firebase alt route"
+  url: "https://free-french-resources.firebaseapp.com/"
   comment: "alternate firebase deploy"
 
-- url: "https://k12-resources-for-french.koshlandjg105.workers.dev/"
+- name: "workers dev (accidently deployed this lol)"
+  url: "https://k12-resources-for-french.koshlandjg105.workers.dev/"
   comment: "french resources 100% real"
