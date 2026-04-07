@@ -29,7 +29,3 @@
 - name: "firebase alt route"
   url: "https://free-french-resources.firebaseapp.com/"
   comment: "alternate firebase deploy"
-
-- name: "workers dev (accidently deployed this lol)"
-  url: "https://k12-resources-for-french.koshlandjg105.workers.dev/"
-  comment: "french resources 100% real"
