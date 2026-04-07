@@ -1,12 +1,12 @@
 (function() {
 
   window.officialUrls = [
-    { url: "https://durokotte.foo.ng/melonsoda/", comment: "Main melonsoda page" },
-    { url: "https://meronsooda.netlify.app/", comment: "Netlify main site" },
-    { url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/", comment: "GitHack version" },
-    { url: "https://learn-french-easy.wasmer.app/", comment: "French learning site" },
-    { url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/", comment: "Algebra tutoring main" },
-    { url: "https://k12-resources-for-french.koshlandjg105.workers.dev/", comment: "French resources main" }
+    { url: "https://durokotte.foo.ng/melonsoda/", comment: "ts is the main page" },
+    { url: "https://meronsooda.netlify.app/", comment: "netlify mirror" },
+    { url: "https://raw.githack.com/linuxfandudeguy/melonsoda/main/", comment: "not hosted by me but i personally use it so is passes" },
+    { url: "https://learn-french-easy.wasmer.app/", comment: "you can learn some very nice french words like le cul" },
+    { url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/", comment: "omg algebra tutoring!1!1!11" },
+    { url: "https://k12-resources-for-french.koshlandjg105.workers.dev/", comment: "french resources 100% real" }
   ];
 
   window.expandedUrls = window.officialUrls.flatMap(obj => [
