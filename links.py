@@ -25,7 +25,7 @@ for entry in data:
 # JS template with HTML embedded
 js_template = f"""const linksPage = {{
     id: "link",
-    title: "link",
+    title: "links",
     html: `
 <h1>links</h1>
 {links_html}`
