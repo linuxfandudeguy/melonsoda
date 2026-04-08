@@ -74,7 +74,13 @@ window.quotes = window.quotes || [
 <script src="./js/links.js"></script>
 
 <script src="./js/official.js"></script>
-
+<script src="./darkmode.min.js"></script>
+ <script>
+function addDarkmodeWidget() {
+    new Darkmode().showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+ </script>
   <!-- Main SPA loader -->
 <script src="./js/main.js"></script>
 
