@@ -41,7 +41,7 @@ with open(links_file, "w", encoding="utf-8") as f:
 print(f"links.js generated at {links_file}")
 
 # === Update README.md safely ===
-readme_section = f"\n\n## Links\n\n{links_html}"
+readme_section = f"\n\n## links\n\n{links_html}"
 
 if os.path.exists(readme_file):
     with open(readme_file, "r", encoding="utf-8") as f:
