@@ -1,8 +1,8 @@
 const toolsPage = {
   id: "fun",
-  title: "fun",
+  title: "toys",
   html: `
-    <h1>Fun Stuff</h1>
+    <h1>toys</h1>
 <p>these are fun things that arent video games</p>
     
     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/apps/thirtydollarwebsite/index.html'); return false;">
