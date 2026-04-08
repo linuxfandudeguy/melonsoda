@@ -15,7 +15,9 @@ Thirty Dollar Website
 WebGL Fluids
 </a>
   
-    
+    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/weavesilk/index.html'); return false;">
+Weavesilk</a>
+  
  
     <scr` + `ipt>
       let currentOverlay = null;
