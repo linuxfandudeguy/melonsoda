@@ -17,7 +17,8 @@ WebGL Fluids
   
     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/weavesilk/index.html'); return false;">
 Weavesilk</a>
-  
+    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/godoblocks/index.html'); return false;">
+Godoblocks</a>
  
     <scr` + `ipt>
       let currentOverlay = null;
