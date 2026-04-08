@@ -24,7 +24,7 @@
 
 - name: "firebase classic"
   url: "https://free-french-resources.web.app/"
-  comment: "firebase deploy (index page does not update but offline/selfupdating.html updates and also for some reason <br> the official website checking system says the site is not official but it is tho)"
+  comment: "firebase deploy (index page does not update but  /selfupdating.html updates and also for some reason <br> the official website checking system says the site is not official but it is tho)"
 
 - name: "firebase alt route"
   url: "https://free-french-resources.firebaseapp.com/"
