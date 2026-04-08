@@ -2,7 +2,7 @@ const gamesPage = {
   id: "games",
   title: "games",
   html: `
-    <h1>Games</h1>
+    <h1>games</h1>
 
  <a href="javascript:(function(){var w=window.open('about:blank','_blank');if(!w){alert('Popup blocked');return;}w.moveTo(0,0);w.resizeTo(screen.width,screen.height);w.focus();w.document.write('<!DOCTYPE html><html><head><title>minecraft</title><style>html,body{margin:0;height:100%;overflow:hidden;background:black;}</style></head><body><iframe src=&quot;https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html&quot; style=&quot;width:100%;height:100%;border:none;&quot; allowfullscreen></iframe><script>document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();<\/script></body></html>');w.document.close();})();"> Eaglercraft (opens in about:blank) </a>
     
@@ -50,6 +50,8 @@ Friday Night Funkin (Macromedia Flash ver.)
 
 
 
+
+
   <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/ovo/index.html'); return false;">
 OVO
 </a>
@@ -70,6 +72,10 @@ Project Sekai (not the real deal, its a scratch port and it only has 24 songs)</
 
  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/stickmandestruction/index.html'); return false;">
 Stickman Destruction (tw: depictions of physical harm)</a>
+
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/granny-main/index.html'); return false;">
+Granny (tw: disturbing visuals)
+</a>
 
     <scr` + `ipt>
       let currentOverlay = null;
