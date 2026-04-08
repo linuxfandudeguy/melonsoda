@@ -1,5 +1,6 @@
 import yaml
 import os
+import re
 
 # Paths
 yaml_file = "urls.yaml"
@@ -15,7 +16,7 @@ os.makedirs(output_dir, exist_ok=True)
 with open(yaml_file, "r", encoding="utf-8") as f:
     data = yaml.safe_load(f)
 
-# === BUILD HTML LINKS FOR links.js ===
+# === BUILD HTML LINKS ===
 links_html = ""
 for entry in data:
     name = entry.get("name", "link")
@@ -23,30 +24,42 @@ for entry in data:
     comment = entry.get("comment", "")
     links_html += f'<a href="{url}" target="_blank">{name}</a> {comment}<br>\n'
 
-# JS template for links.js
+# === links.js ===
 links_js = f"""const linksPage = {{
     id: "link",
     title: "links",
     html: `
 <h1>links</h1>
-{links_html}`
+{links_html}``
 }};
 window.Pages = window.Pages || [];
 window.Pages.push(linksPage);
 """
 
-# Write links.js
 with open(links_file, "w", encoding="utf-8") as f:
     f.write(links_js)
 print(f"links.js generated at {links_file}")
 
-# Append HTML links to README.md
-readme_append_content = "\n\n## Links\n\n" + links_html
-with open(readme_file, "a", encoding="utf-8") as f:
-    f.write(readme_append_content)
-print(f"Links appended to {readme_file}")
+# === Update README.md safely ===
+readme_section = f"\n\n## Links\n\n{links_html}"
 
-# === official.js CONTENT ===
+if os.path.exists(readme_file):
+    with open(readme_file, "r", encoding="utf-8") as f:
+        readme_content = f.read()
+
+    # Replace old Links section if exists
+    if "## Links" in readme_content:
+        readme_content = re.sub(r"\n## Links\n.*", readme_section, readme_content, flags=re.DOTALL)
+    else:
+        readme_content += readme_section
+else:
+    readme_content = readme_section
+
+with open(readme_file, "w", encoding="utf-8") as f:
+    f.write(readme_content)
+print(f"README.md updated at {readme_file}")
+
+# === official.js ===
 official_js = """(function() {
 
 window.officialUrls = [
@@ -116,16 +129,10 @@ setTimeout(closePopup, 5000);
 })();
 """
 
-# Replace { urls } placeholder with actual URL objects from YAML
-urls_js_list = []
-for entry in data:
-    url = entry.get("url", "")
-    comment = entry.get("comment", "")
-    urls_js_list.append(f'  {{ url: "{url}", comment: "{comment}" }}')
+urls_js_list = [f'  {{ url: "{entry.get("url","")}", comment: "{entry.get("comment","")}" }}' for entry in data]
 urls_js_str = ",\n".join(urls_js_list)
 official_js = official_js.replace("{ urls }", urls_js_str)
 
-# Write official.js
 with open(official_file, "w", encoding="utf-8") as f:
     f.write(official_js)
 print(f"official.js generated at {official_file}")
