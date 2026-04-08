@@ -68,13 +68,21 @@ Raldi's Crackhouse (tw: profanity, mention of drugs and edgy humor)</a>
 Gacha Life</a>
  
  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/Project%20Sekai%20-%20%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%BB%E3%82%AB%E3%82%A4/index.html'); return false;">
-Project Sekai (not the real deal, its a scratch port and it only has 24 songs)</a>
+Project Sekai (not the real deal, its a scratch remake and it only has 24 songs)</a>
 
  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/stickmandestruction/index.html'); return false;">
 Stickman Destruction (tw: depictions of physical harm)</a>
 
  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/granny-main/index.html'); return false;">
 Granny (tw: disturbing visuals)
+</a>
+ 
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/gorilla-tag-main/index.html'); return false;">
+Gorilla Tag
+</a>
+
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/untitled-goose-game-main/index.html'); return false;">
+Untitled Goose Game
 </a>
 
     <scr` + `ipt>
