@@ -12,7 +12,7 @@
 
 - name: "f r e n c h"
   url: "https://learn-french-easy.wasmer.app/"
-  comment: "you can learn some very nice french words like le cul (also offline/selfupdating.html is the only working thing for some reason)"
+  comment: "you can learn some very nice french words like le cul (also is recommended offline/selfupdating.html is the only page that updates)"
 
 - name: "totally real algebra help"
   url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/"
@@ -20,7 +20,7 @@
 
 - name: "very not sketchy edgeone deploy"
   url: "https://educational-algebra-study-tutor.edgeone.app/"
-  comment: "had to use the sketchy tencent edge service as that wasn't blocked (selfupdating.html is the one served)"
+  comment: "had to use the sketchy tencent edge service as that wasn't blocked (offline/selfupdating.html is the one served)"
 
 - name: "firebase classic"
   url: "https://free-french-resources.web.app/"
