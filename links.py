@@ -1,24 +1,47 @@
 import yaml
 import os
-import re
+from urllib.parse import urlparse
 
 # Paths
 yaml_file = "urls.yaml"
 output_dir = "js"
 links_file = os.path.join(output_dir, "links.js")
 official_file = os.path.join(output_dir, "official.js")
-readme_file = "README.md"
 
-# Ensure output directory exists
 os.makedirs(output_dir, exist_ok=True)
+
+# === NORMALIZE (match your JS logic) ===
+def normalize(url: str) -> str:
+    try:
+        u = urlparse(url)
+        path = u.path.rstrip("/")
+        return f"{u.scheme}://{u.netloc}{path}"
+    except:
+        return url
+
+# === ESCAPE FOR JS ===
+def js_escape(s: str) -> str:
+    return s.replace("\\", "\\\\").replace('"', '\\"')
 
 # === LOAD YAML ===
 with open(yaml_file, "r", encoding="utf-8") as f:
     data = yaml.safe_load(f)
 
+# === DEDUPLICATE ===
+seen = set()
+deduped = []
+
+for entry in data:
+    url = entry.get("url", "")
+    norm = normalize(url)
+
+    if norm not in seen:
+        seen.add(norm)
+        deduped.append(entry)
+
 # === BUILD HTML LINKS ===
 links_html = ""
-for entry in data:
+for entry in deduped:
     name = entry.get("name", "link")
     url = entry.get("url", "#")
     comment = entry.get("comment", "")
@@ -38,29 +61,11 @@ window.Pages.push(linksPage);
 
 with open(links_file, "w", encoding="utf-8") as f:
     f.write(links_js)
+
 print(f"links.js generated at {links_file}")
 
-# === Update README.md safely ===
-readme_section = f"\n\n## links\n\n{links_html}"
-
-if os.path.exists(readme_file):
-    with open(readme_file, "r", encoding="utf-8") as f:
-        readme_content = f.read()
-
-    # Replace old Links section if exists
-    if "## Links" in readme_content:
-        readme_content = re.sub(r"\n## Links\n.*", readme_section, readme_content, flags=re.DOTALL)
-    else:
-        readme_content += readme_section
-else:
-    readme_content = readme_section
-
-with open(readme_file, "w", encoding="utf-8") as f:
-    f.write(readme_content)
-print(f"README.md updated at {readme_file}")
-
 # === official.js ===
-official_js = """(function() {
+official_js_template = """(function() {
 
 window.officialUrls = [
 { urls }
@@ -129,10 +134,16 @@ setTimeout(closePopup, 5000);
 })();
 """
 
-urls_js_list = [f'  {{ url: "{entry.get("url","")}", comment: "{entry.get("comment","")}" }}' for entry in data]
+# === BUILD URL LIST (DEDUPED + ESCAPED) ===
+urls_js_list = [
+    f'  {{ url: "{js_escape(entry.get("url",""))}", comment: "{js_escape(entry.get("comment",""))}" }}'
+    for entry in deduped
+]
+
 urls_js_str = ",\n".join(urls_js_list)
-official_js = official_js.replace("{ urls }", urls_js_str)
+official_js = official_js_template.replace("{ urls }", urls_js_str)
 
 with open(official_file, "w", encoding="utf-8") as f:
     f.write(official_js)
+
 print(f"official.js generated at {official_file}")
