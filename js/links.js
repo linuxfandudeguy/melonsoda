@@ -11,6 +11,7 @@ const linksPage = {
 <a href="https://educational-algebra-study-tutor.edgeone.app/" target="_blank">very not sketchy edgeone deploy</a> had to use the sketchy tencent edge service as that wasn't blocked (offline/selfupdating.html is the one served)<br>
 <a href="https://free-french-resources.web.app/" target="_blank">firebase classic</a> firebase deploy (index page does not update but  /selfupdating.html updates and also for some reason <br> the official website checking system says the site is not official but it is tho)<br>
 <a href="https://free-french-resources.firebaseapp.com/" target="_blank">firebase alt route</a> alternate firebase deploy<br>
+<a href="https://unpkg.com/melonsoda@1.0.0" target="_blank">just an npm package (visit offline/selfupdating.html</a> unpkg mirror<br>
 `
 };
 window.Pages = window.Pages || [];
