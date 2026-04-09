@@ -29,7 +29,3 @@
 - name: "firebase alt route"
   url: "https://free-french-resources.firebaseapp.com/"
   comment: "alternate firebase deploy"
-
-- name: "just an npm package nothing to see here"
-  url: "https://unpkg.com/melonsoda@1.0.0/index.html"
-  comment: "unpkg package (also again offline/selfupdating.html is the only updating one)"
