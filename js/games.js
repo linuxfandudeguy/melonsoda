@@ -30,9 +30,7 @@ const gamesPage = {
     Happy Wheels (tw: extreme gore)
     </a>
 
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html'); return false;">
-Multi-console game emulator    
-</a>
+   
 
     <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html?rom=Scribblenauts%20Collection%20(USA).nds'); return false;">
 Scribblenauts/Super Scribblenauts  
@@ -97,6 +95,9 @@ BB Classic Remastered
 </a>
  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/baldi-plus/index.html'); return false;">
 BB+
+</a>
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html?rom=1235%20-%20Taiko%20no%20Tatsujin%20DS%20-%20Touch%20de%20Dokodon!%20(J)(Independent).nds'); return false;">
+太鼓の達人DS タッチでドコドン！(en: Taiko no Tatsujin DS: Touch and Drum)
 </a>
     <scr` + `ipt>
       let currentOverlay = null;
