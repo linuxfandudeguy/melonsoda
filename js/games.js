@@ -88,6 +88,16 @@ Gorilla Tag
  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/people-playground/index.html'); return false;">
 People Playground
 </a>
+
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/dokidoki/index.html'); return false;">
+Doki Doki Liturature Club
+</a>
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/baldi-remaster/index.html'); return false;">
+BB Classic Remastered
+</a>
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/baldi-plus/index.html'); return false;">
+BB+
+</a>
     <scr` + `ipt>
       let currentOverlay = null;
       let currentFrame = null;
