@@ -30,7 +30,7 @@ links_js = f"""const linksPage = {{
     title: "links",
     html: `
 <h1>links</h1>
-{links_html}``
+{links_html}`
 }};
 window.Pages = window.Pages || [];
 window.Pages.push(linksPage);
