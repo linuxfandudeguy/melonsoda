@@ -85,7 +85,9 @@ Gorilla Tag
 
  <a href="javascript:(function(){var w=window.open('about:blank','_blank');if(!w){alert('Popup blocked');return;}w.moveTo(0,0);w.resizeTo(screen.width,screen.height);w.focus();w.document.write('<!DOCTYPE html><html><head><title>minecraft</title><style>html,body{margin:0;height:100%;overflow:hidden;background:black;}</style></head><body><iframe src=&quot;https://file.garden/ZtNXqbPCZ1cAh6MT/untitled-goose-game-main/index.html&quot; style=&quot;width:100%;height:100%;border:none;&quot; allowfullscreen></iframe><script>document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();<\/script></body></html>');w.document.close();})();"> Untitled Goose Game (opens in about:blank) </a>
 
-
+ <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/people-playground/index.html'); return false;">
+People Playground
+</a>
     <scr` + `ipt>
       let currentOverlay = null;
       let currentFrame = null;
