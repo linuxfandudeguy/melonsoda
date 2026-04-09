@@ -30,6 +30,6 @@
   url: "https://free-french-resources.firebaseapp.com/"
   comment: "alternate firebase deploy"
 
-- name: "just an npm package (visit offline/selfupdating.html"
+- name: "just an npm package (visit offline/selfupdating.html)"
   url: "https://unpkg.com/melonsoda@1.0.0"
   comment: "unpkg mirror"
