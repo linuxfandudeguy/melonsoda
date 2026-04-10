@@ -33,3 +33,8 @@
 - name: "just an npm package (visit offline/selfupdating.html)"
   url: "https://unpkg.com/melonsoda@1.0.0"
   comment: "unpkg mirror"
+
+  - name: "english language arts test prep!!!"
+  url: "https://m3lon-ela-testprep.w3spaces.com/"
+  comment: "unpkg mirror"
+
