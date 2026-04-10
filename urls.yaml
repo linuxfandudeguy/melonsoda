@@ -12,19 +12,19 @@
 
 - name: "f r e n c h"
   url: "https://learn-french-easy.wasmer.app/"
-  comment: "you can learn some very nice french words like le cul (also offline/selfupdating.html is the only page that updates)"
+  comment: "you can learn some very nice french words like le cul (offline/selfupdating.html updates only)"
 
 - name: "totally real algebra help"
   url: "https://k12-algebra-tutoring-edu-us-resources.pages.dev/"
-  comment: "omg algebra tutoring!1!1!11"
+  comment: "algebra tutoring"
 
 - name: "very not sketchy edgeone deploy"
   url: "https://educational-algebra-study-tutor.edgeone.app/"
-  comment: "had to use the sketchy tencent edge service as that wasn't blocked (offline/selfupdating.html is the one served)"
+  comment: "tencent edge deployment (offline/selfupdating.html serves content)"
 
 - name: "firebase classic"
   url: "https://free-french-resources.web.app/"
-  comment: "firebase deploy (index page does not update but  /selfupdating.html updates and also for some reason <br> the official website checking system says the site is not official but it is tho)"
+  comment: "firebase deploy (index static, /selfupdating.html updates)"
 
 - name: "firebase alt route"
   url: "https://free-french-resources.firebaseapp.com/"
@@ -34,7 +34,7 @@
   url: "https://unpkg.com/melonsoda@1.0.0"
   comment: "unpkg mirror"
 
-  - name: "english language arts test prep!!!"
+- name: "english language arts test prep!!!"
   url: "https://m3lon-ela-testprep.w3spaces.com/"
   comment: "w3spaces mirror"
 
