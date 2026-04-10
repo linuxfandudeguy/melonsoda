@@ -6,6 +6,12 @@ const homePage = {
     <small id="quote"></small>
 
       <p>a gaming hub that has unblockers, games and so much more lol</p>
+<scr`+`ipt>
+window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    e.returnValue = "";
+});
+</scr`+`ipt>
 
   <scr`+`ipt>
     
