@@ -3,40 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-
-function go(url) {
-  location.hash = "#/game/" + encodeURIComponent(url);
-}
-
-async function load() {
-  let raw = location.hash;
-
-  if (!raw.startsWith("#/game/")) return;
-
-  let url = decodeURIComponent(raw.replace("#/game/", ""));
-
-  try {
-    let res = await fetch(url);
-    if (!res.ok) throw new Error("Fetch failed");
-
-    let html = await res.text();
-
-    // 🔥 full takeover
-    document.open();
-    document.write(html);
-    document.close();
-
-  } catch (e) {
-    document.body.innerHTML = "<h1>Failed to load game</h1>";
-    console.error(e);
-  }
-}
-
-window.addEventListener("load", load);
-window.addEventListener("hashchange", load);
-
-</script>
+  
 
 <title>melonsoda</title>
 <script>
