@@ -3,6 +3,8 @@ const gamesPage = {
   title: "games",
   html: `
     <h1>games</h1>
+<p>i would like to thank <a href="https://noahstutoring.academy/">Noah's Tutoring Hub</a> for making the game backups possible, and also <br><a href="https://gn-math.dev/">gn-math</a> for providing ports for a lot of the games here.</p>
+
 
  <a href="javascript:(function(){var w=window.open('about:blank','_blank');if(!w){alert('Popup blocked');return;}w.moveTo(0,0);w.resizeTo(screen.width,screen.height);w.focus();w.document.write('<!DOCTYPE html><html><head><title>minecraft</title><style>html,body{margin:0;height:100%;overflow:hidden;background:black;}</style></head><body><iframe src=&quot;https://file.garden/ZtNXqbPCZ1cAh6MT/EaglercraftX_1.8_u53_Offline_Signed.html&quot; style=&quot;width:100%;height:100%;border:none;&quot; allowfullscreen></iframe><script>document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();<\/script></body></html>');w.document.close();})();"> Eaglercraft (opens in about:blank) </a>
     
