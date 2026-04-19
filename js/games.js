@@ -13,7 +13,7 @@ const gamesPage = {
 
     <div id="gameList">Loading...</div>
 
-    <script>
+    <scr`+`ipt>
       const ZIP_URL = "https://raw.githubusercontent.com/linuxfandudeguy/melonsoda/main/math.zip";
       const gameListEl = document.getElementById("gameList");
 
@@ -110,7 +110,7 @@ const gamesPage = {
       }
 
       loadZipGames();
-    </script>
+    </scr`+`ipt>
   `
 };
 
