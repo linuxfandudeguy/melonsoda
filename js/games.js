@@ -13,8 +13,7 @@ const gamesPage = {
 
     <div id="gameList">Loading...</div>
 
-    <scr`+`ipt>
-      const ZIP_URL = "https://raw.githubusercontent.com/linuxfandudeguy/melonsoda/main/math.zip";
+    <scr` + `ipt>
       const gameListEl = document.getElementById("gameList");
 
       function extractNumber(filename) {
@@ -24,7 +23,7 @@ const gamesPage = {
 
       async function loadZipGames() {
         try {
-          const res = await fetch(ZIP_URL);
+          const res = await fetch(window.ZIP_URL);
           const blob = await res.blob();
 
           const zip = await JSZip.loadAsync(blob);
@@ -110,7 +109,7 @@ const gamesPage = {
       }
 
       loadZipGames();
-    </scr`+`ipt>
+    </scr` + `ipt>
   `
 };
 
