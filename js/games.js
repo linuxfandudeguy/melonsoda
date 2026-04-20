@@ -14,7 +14,7 @@ const gamesPage = {
     <div id="gameList">Loading...</div>
 
     <scr` + `ipt>
-      const gameListEl = document.getElementById("gameList");
+      window.gameListEl = document.getElementById("gameList");
 
       function extractNumber(filename) {
         const match = filename.match(/\\d+/);
@@ -37,7 +37,7 @@ const gamesPage = {
           });
 
           if (!entries.length) {
-            gameListEl.innerText = "No HTML files found.";
+            window.gameListEl.innerText = "No HTML files found.";
             return;
           }
 
@@ -48,7 +48,7 @@ const gamesPage = {
             return extractNumber(aName) - extractNumber(bName);
           });
 
-          gameListEl.innerHTML = "";
+          window.gameListEl.innerHTML = "";
 
           for (const entry of entries) {
             const fileName = entry.path.split("/").pop();
@@ -70,12 +70,12 @@ const gamesPage = {
               launchGame(url);
             };
 
-            gameListEl.appendChild(a);
+            window.gameListEl.appendChild(a);
           }
 
         } catch (err) {
           console.error(err);
-          gameListEl.innerText = "Failed to load games.";
+          window.gameListEl.innerText = "Failed to load games.";
         }
       }
 
