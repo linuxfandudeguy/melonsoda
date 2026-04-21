@@ -3,13 +3,7 @@ const gamesPage = {
   title: "games",
   html: `
     <h1>games</h1>
-    <p>
-      some games might be broken, and also they are unnamed, some have weird names, so tbh, good luck. (credit to gn-math for the games)<br>
-      i had to do this because my file.garden account was hacked, even after gaining control of the account again,<br>
-      i want melonsoda to have more games, even if it comes at the expense of being confused of which games are which.
-    </p>
 
-    <p>— jay (aka duro)</p>
 
     <div id="gameList">Loading...</div>
 
