@@ -4,16 +4,10 @@ const gamesPage = {
   html: `
     <h1>games</h1>
 
-
     <div id="gameList">Loading...</div>
 
     <scr` + `ipt>
       window.gameListEl = document.getElementById("gameList");
-
-      function extractNumber(filename) {
-        const match = filename.match(/\\d+/);
-        return match ? parseInt(match[0], 10) : Infinity;
-      }
 
       async function loadZipGames() {
         try {
@@ -35,18 +29,24 @@ const gamesPage = {
             return;
           }
 
-          // NUMERIC SORT (fixes 1,2,10 issue)
+          // A-Z SORT (alphabetical)
           entries.sort((a, b) => {
-            const aName = a.path.split("/").pop();
-            const bName = b.path.split("/").pop();
-            return extractNumber(aName) - extractNumber(bName);
+            const aName = a.path.split("/").pop()
+              .replace(/\.html$/i, "")
+              .toLowerCase();
+
+            const bName = b.path.split("/").pop()
+              .replace(/\.html$/i, "")
+              .toLowerCase();
+
+            return aName.localeCompare(bName);
           });
 
           window.gameListEl.innerHTML = "";
 
           for (const entry of entries) {
             const fileName = entry.path.split("/").pop();
-            const name = fileName.replace(/\\.html$/i, "");
+            const name = fileName.replace(/\.html$/i, "");
 
             const a = document.createElement("a");
             a.href = "#";
