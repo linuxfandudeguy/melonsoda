@@ -1,0 +1,76 @@
+name: Embed math.zip into index.html
+
+on:
+  push:
+    paths:
+      - "math.zip"
+      - "index.html"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Embed ZIP into HTML
+        run: |
+          python - << 'EOF'
+          import base64
+          import re
+
+          ZIP_FILE = "math.zip"
+          HTML_FILE = "index.html"
+
+          with open(ZIP_FILE, "rb") as f:
+              b64 = base64.b64encode(f.read()).decode("utf-8")
+
+          with open(HTML_FILE, "r", encoding="utf-8") as f:
+              html = f.read()
+
+          script_block = f"""
+          <script>
+          window.ZIP_URL = "data:application/zip;base64,{b64}";
+          </script>
+          """.strip()
+
+          # remove old ZIP_URL script if exists
+          html = re.sub(
+              r'<script>\s*window\.ZIP_URL\s*=.*?</script>',
+              "",
+              html,
+              flags=re.DOTALL
+          )
+
+          # inject into head
+          if "</head>" not in html:
+              raise Exception("No </head> found")
+
+          html = html.replace("</head>", script_block + "\n</head>")
+
+          with open(HTML_FILE, "w", encoding="utf-8") as f:
+              f.write(html)
+
+          print("Injected ZIP into HTML")
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add index.html
+
+          git commit -m "Embed math.zip as base64 into index.html" || echo "No changes to commit"
+
+          git push
