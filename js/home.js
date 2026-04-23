@@ -83,13 +83,7 @@ const homePage = {
   f.href='https://www.ixl.com/ixl-favicon.png';
 })()">cloak (IXL) </a>
 <br>
-  <a href="javascript:(function(){
-  document.body.innerHTML='';
-  var iframe=document.createElement('iframe');
-  iframe.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;border:none;';
-  iframe.src=location.href;
-  document.body.appendChild(iframe);
-})();">hide in about:blank </a>
+ 
 
       <span>2026 <a href="https://durokotte.foo.ng">durokotte</a> | <a href="https://github.com/linuxfandudeguy/melonsoda">github</a> | AGPL-3.0 <br><br> all things on this site except for the site itself is not mine, everything on the site belongs to<br> the respective owners </span>
     `
