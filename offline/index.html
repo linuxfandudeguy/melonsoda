@@ -322,10 +322,56 @@ const gamesPage = {
   html: `
     <h1>games</h1>
 
+    <input id="searchBar" placeholder="Search games..." 
+      style="padding:6px;width:100%;max-width:300px;margin-bottom:10px;">
+
     <div id="gameList">Loading...</div>
 
     <scr` + `ipt>
       window.gameListEl = document.getElementById("gameList");
+      const searchBar = document.getElementById("searchBar");
+
+      let allEntries = [];
+
+      function renderList(filter = "") {
+        window.gameListEl.innerHTML = "";
+
+        const filtered = allEntries.filter(entry => {
+          const name = entry.path.split("/").pop()
+            .replace(/\\.html$/i, "")
+            .toLowerCase();
+
+          return name.includes(filter.toLowerCase());
+        });
+
+        if (!filtered.length) {
+          window.gameListEl.innerText = "No matching games.";
+          return;
+        }
+
+        for (const entry of filtered) {
+          const fileName = entry.path.split("/").pop();
+          const name = fileName.replace(/\\.html$/i, "");
+
+          const a = document.createElement("a");
+          a.href = "#";
+          a.textContent = name;
+          a.style.display = "block";
+          a.style.margin = "6px 0";
+
+          a.onclick = async (e) => {
+            e.preventDefault();
+
+            const html = await entry.file.async("string");
+            const blob = new Blob([html], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+
+            launchGame(url);
+          };
+
+          window.gameListEl.appendChild(a);
+        }
+      }
 
       async function loadZipGames() {
         try {
@@ -347,49 +393,32 @@ const gamesPage = {
             return;
           }
 
-          // A-Z SORT (alphabetical)
+          // A-Z SORT
           entries.sort((a, b) => {
             const aName = a.path.split("/").pop()
-              .replace(/\.html$/i, "")
+              .replace(/\\.html$/i, "")
               .toLowerCase();
 
             const bName = b.path.split("/").pop()
-              .replace(/\.html$/i, "")
+              .replace(/\\.html$/i, "")
               .toLowerCase();
 
             return aName.localeCompare(bName);
           });
 
-          window.gameListEl.innerHTML = "";
-
-          for (const entry of entries) {
-            const fileName = entry.path.split("/").pop();
-            const name = fileName.replace(/\.html$/i, "");
-
-            const a = document.createElement("a");
-            a.href = "#";
-            a.textContent = name;
-            a.style.display = "block";
-            a.style.margin = "6px 0";
-
-            a.onclick = async (e) => {
-              e.preventDefault();
-
-              const html = await entry.file.async("string");
-              const blob = new Blob([html], { type: "text/html" });
-              const url = URL.createObjectURL(blob);
-
-              launchGame(url);
-            };
-
-            window.gameListEl.appendChild(a);
-          }
+          allEntries = entries;
+          renderList();
 
         } catch (err) {
           console.error(err);
           window.gameListEl.innerText = "Failed to load games.";
         }
       }
+
+      // 🔍 Live search
+      searchBar.addEventListener("input", () => {
+        renderList(searchBar.value);
+      });
 
       function launchGame(url) {
         const overlay = document.createElement("div");
