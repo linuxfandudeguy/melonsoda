@@ -331,12 +331,13 @@ const gamesPage = {
       window.gameListEl = document.getElementById("gameList");
       window.searchBar = document.getElementById("searchBar");
 
-      let allEntries = [];
+      // persistent state (IMPORTANT FIX)
+      window.allEntries = window.allEntries || [];
 
       function renderList(filter = "") {
         window.gameListEl.innerHTML = "";
 
-        const filtered = allEntries.filter(entry => {
+        const filtered = window.allEntries.filter(entry => {
           const name = entry.path.split("/").pop()
             .replace(/\\.html$/i, "")
             .toLowerCase();
@@ -406,7 +407,7 @@ const gamesPage = {
             return aName.localeCompare(bName);
           });
 
-          allEntries = entries;
+          window.allEntries = entries;
           renderList();
 
         } catch (err) {
