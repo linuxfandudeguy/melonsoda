@@ -11,7 +11,7 @@ const gamesPage = {
 
     <scr` + `ipt>
       window.gameListEl = document.getElementById("gameList");
-      const searchBar = document.getElementById("searchBar");
+      window.searchBar = document.getElementById("searchBar");
 
       let allEntries = [];
 
@@ -98,8 +98,8 @@ const gamesPage = {
       }
 
       // 🔍 Live search
-      searchBar.addEventListener("input", () => {
-        renderList(searchBar.value);
+      window.searchBar.addEventListener("input", () => {
+        renderList(window.searchBar.value);
       });
 
       function launchGame(url) {
