@@ -21,5 +21,11 @@ here’s a single table with all files in the folder:
 
 
 
+## credit
+games
 
-credit to bog for -3 and people playground
+1. Noah's Tutoring
+2. Paracks342 (yume nikki)
+3. gn-math
+4. UGS
+5. FreezeNova
