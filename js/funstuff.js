@@ -8,14 +8,9 @@ const toolsPage = {
 GUST Proxy</a>
 <br>
 
-    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/biology.svg'); return false;">
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/science.svg'); return false;">
 Sandstone Proxy</a>
   
-    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/google-classroom-ixl@main/google-class.svg'); return false;">
-Soundboard</a>
-    
-    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/google-classroom-ixl@main/logo.svg'); return false;">
-Scratch Editor + Turbowarp </a>
 
 
     <scr` + `ipt>
