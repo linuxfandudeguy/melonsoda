@@ -4,7 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>window.gameListEl = document.getElementById("gameList");</script>
+<script type="module">
+const now = new Date();
 
+// April is month 3 because JavaScript months are 0-indexed
+const isAprilThird =
+  now.getMonth() === 3 &&
+  now.getDate() === 3;
+
+if (isAprilThird) {
+  import('https://cdn.statically.io/gh/graduate-edu/scripts@99d5c0eea7f34724b37b95c7c771f27f44e93859/confetti.mjs').then(({ default: confetti }) => {
+    confetti();
+    alert("happy birthday melonsoda");
+  });
+}
+</script>
 <title>melonsoda</title>
 <script>
 window.quotes = window.quotes || [
@@ -12,6 +26,7 @@ window.quotes = window.quotes || [
     "NO CHICK-FIL-A SAUSE?!?!?!?!!?!?!",
     "eggs are the better species",
     "i just wanted a tung tung tung sahur😭😢 - kreekcraft (2025) ",
+    "Did you know: MelonSoda was supposed to be a website meant to serve rentry templates? ",
     "do not redeem!1!1!1!1!"
   ];
 </script>
@@ -166,6 +181,10 @@ button:hover {
   border-radius: 15px;      
 }
 </style>
+
+
+
+
 
 
 
@@ -623,30 +642,23 @@ window.Pages.push(unblockersPage);
 <!-- <script>
 const toolsPage = {
   id: "fun",
-  title: "toys",
+  title: "toys/tools",
   html: `
-    <h1>toys</h1>
-<p>these are fun things that arent video games</p>
+    <h1>toys/tools</h1>
     
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/apps/thirtydollarwebsite/index.html'); return false;">
-Thirty Dollar Website
-</a>
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/biology.svg'); return false;">
+GUST Proxy</a>
 <br>
-<small>note: a lot of the images on thirty dollar website are <br> missing due to the cdn that i am using placing csp restrictions <br> on websites outside of the cdn, thankfully the audio is not blocked </small>
-<br>
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/apps/fluidsim/index.html'); return false;">
-WebGL Fluids
-</a>
+
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/biology.svg'); return false;">
+Sandstone Proxy</a>
   
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/weavesilk/index.html'); return false;">
-Weavesilk</a>
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/google-classroom-ixl@main/google-class.svg'); return false;">
+Soundboard</a>
     
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/godoblocks/index.html'); return false;">
-Godoblocks</a>
- 
-  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html'); return false;">
-Multi-console game emulator    
-</a>
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/google-classroom-ixl@main/logo.svg'); return false;">
+Scratch Editor + Turbowarp </a>
+
 
     <scr` + `ipt>
       let currentOverlay = null;
