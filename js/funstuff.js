@@ -1,29 +1,22 @@
 const toolsPage = {
   id: "fun",
-  title: "toys",
+  title: "toys/tools",
   html: `
-    <h1>toys</h1>
-<p>these are fun things that arent video games</p>
+    <h1>toys/tools</h1>
     
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/apps/thirtydollarwebsite/index.html'); return false;">
-Thirty Dollar Website
-</a>
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/biology.svg'); return false;">
+GUST Proxy</a>
 <br>
-<small>note: a lot of the images on thirty dollar website are <br> missing due to the cdn that i am using placing csp restrictions <br> on websites outside of the cdn, thankfully the audio is not blocked </small>
-<br>
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/apps/fluidsim/index.html'); return false;">
-WebGL Fluids
-</a>
+
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/biology.svg'); return false;">
+Sandstone Proxy</a>
   
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/weavesilk/index.html'); return false;">
-Weavesilk</a>
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/google-classroom-ixl@main/google-class.svg'); return false;">
+Soundboard</a>
     
-    <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/godoblocks/index.html'); return false;">
-Godoblocks</a>
- 
-  <a href="#" class="game-link" onclick="launchGame('https://file.garden/ZtNXqbPCZ1cAh6MT/4.2.3/index.html'); return false;">
-Multi-console game emulator    
-</a>
+    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/google-classroom-ixl@main/logo.svg'); return false;">
+Scratch Editor + Turbowarp </a>
+
 
     <scr` + `ipt>
       let currentOverlay = null;
