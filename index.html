@@ -4,7 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>window.gameListEl = document.getElementById("gameList");</script>
+<script type="module">
+const now = new Date();
 
+// April is month 3 because JavaScript months are 0-indexed
+const isAprilThird =
+  now.getMonth() === 3 &&
+  now.getDate() === 3;
+
+if (isAprilThird) {
+  import('https://esm.run/canvas-confetti').then(({ default: confetti }) => {
+    confetti();
+    alert("happy birthday melonsoda");
+  });
+}
+</script>
 <title>melonsoda</title>
 <script>
 window.quotes = window.quotes || [
@@ -12,6 +26,7 @@ window.quotes = window.quotes || [
     "NO CHICK-FIL-A SAUSE?!?!?!?!!?!?!",
     "eggs are the better species",
     "i just wanted a tung tung tung sahur😭😢 - kreekcraft (2025) ",
+    "EHEHLELELELELELHAHAHAHEHEH <br><img src=\"https://cdn.jsdelivr.net/gh/linuxfandudeguy/classwork-chemistry@6edade560973404b192e88e9fac5d4f8f6c52a81/images.jpg\" alt=\"freaky mango image\"></p>",
     "do not redeem!1!1!1!1!"
   ];
 </script>
