@@ -10,7 +10,7 @@ const gamesPage = {
     <div id="gameList">Loading...</div>
 
     <scr` + `ipt>
-      var BASE = "https://originfastly.jsdelivr.net/gh/linuxfandudeguy/turbo-meme/";
+      var BASE = "https://originfastly.jsdelivr.net/gh/linuxfandudeguy/turbo-meme@main/";
 
       window.gameListEl = document.getElementById("gameList");
       window.searchBar = document.getElementById("searchBar");
