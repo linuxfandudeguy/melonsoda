@@ -15,27 +15,27 @@ const gamesPage = {
       window.gameListEl = document.getElementById("gameList");
       window.searchBar = document.getElementById("searchBar");
 
-      window.allEntries = window.allEntries || [];
+      window.allEntries = [];
 
-      function cleanName(href) {
-        return href
+      // 🔥 HARD FIX: aggressively sanitize ANY broken href
+      function cleanHref(h) {
+        return decodeURIComponent(h)
           .replace(/^\\/?/, "")
-          .replace(/\\.html$/i, "");
-      }
-
-      function makeUrl(path) {
-        return BASE + encodeURI(path);
+          .replace(/^gh\\/linuxfandudeguy\\/turbo-meme(@[^\\/]+)?\\//, "")
+          .replace(/^@[^\\/]+\\//, "")
+          .replace(/^master\\//, "")
+          .replace(/^main\\//, "");
       }
 
       function renderList(filter = "") {
-        window.gameListEl.innerHTML = "";
+        gameListEl.innerHTML = "";
 
-        const filtered = window.allEntries.filter(entry => {
-          return entry.name.toLowerCase().includes(filter.toLowerCase());
-        });
+        const filtered = window.allEntries.filter(e =>
+          e.name.toLowerCase().includes(filter.toLowerCase())
+        );
 
         if (!filtered.length) {
-          window.gameListEl.innerText = "No matching games.";
+          gameListEl.innerText = "No matching games.";
           return;
         }
 
@@ -51,7 +51,7 @@ const gamesPage = {
             launchGame(entry.url);
           };
 
-          window.gameListEl.appendChild(a);
+          gameListEl.appendChild(a);
         }
       }
 
@@ -66,10 +66,11 @@ const gamesPage = {
             .map(a => a.getAttribute("href"))
             .filter(h => h && h.endsWith(".html"))
             .map(h => {
-              const clean = cleanName(h);
+              const clean = cleanHref(h);
+
               return {
-                name: clean,
-                url: makeUrl(clean + ".html")
+                name: clean.replace(/\\.html$/i, ""),
+                url: BASE + clean
               };
             })
             .sort((a, b) => a.name.localeCompare(b.name));
@@ -79,31 +80,41 @@ const gamesPage = {
 
         } catch (err) {
           console.error(err);
-          window.gameListEl.innerText = "Failed to load games.";
+          gameListEl.innerText = "Failed to load games.";
         }
       }
 
-      // 🔍 search
-      window.searchBar.addEventListener("input", (e) => {
+      searchBar.addEventListener("input", (e) => {
         renderList(e.target.value);
       });
 
-      // 🔥 FETCH + DOCUMENT.WRITE ENGINE
+      // 🔥 FULLSCREEN + DOCUMENT.WRITE FIXED OVERLAY
       async function launchGame(url) {
         const overlay = document.createElement("div");
         overlay.style.cssText =
-          "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;";
+          "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;";
 
         const frame = document.createElement("iframe");
         frame.style.cssText = "width:85%;height:85%;border:none;background:white;";
 
+        const btnRow = document.createElement("div");
+        btnRow.style.cssText = "display:flex;gap:10px;margin-top:10px;";
+
         const closeBtn = document.createElement("button");
         closeBtn.textContent = "Close";
-        closeBtn.style.cssText = "margin-top:10px;padding:6px 12px;cursor:pointer;";
         closeBtn.onclick = () => overlay.remove();
 
+        const fsBtn = document.createElement("button");
+        fsBtn.textContent = "Fullscreen";
+        fsBtn.onclick = () => {
+          if (overlay.requestFullscreen) overlay.requestFullscreen();
+        };
+
+        btnRow.appendChild(closeBtn);
+        btnRow.appendChild(fsBtn);
+
         overlay.appendChild(frame);
-        overlay.appendChild(closeBtn);
+        overlay.appendChild(btnRow);
         document.body.appendChild(overlay);
 
         try {
@@ -118,7 +129,7 @@ const gamesPage = {
 
         } catch (err) {
           console.error(err);
-          frame.src = url; // fallback
+          frame.src = url;
         }
       }
 
