@@ -13,6 +13,7 @@ const linksPage = {
 <a href="https://free-french-resources.firebaseapp.com/" target="_blank">firebase alt route</a> alternate firebase deploy<br>
 <a href="https://unpkg.com/melonsoda@1.0.0" target="_blank">just an npm package (visit offline/selfupdating.html)</a> unpkg mirror<br>
 <a href="https://m3lon-ela-testprep.w3spaces.com/" target="_blank">english language arts test prep!!!</a> w3spaces mirror<br>
+<a href="https://melonsoda.vercel.app" target="_blank">vercelel</a> vercel 67 mango mustard<br>
 `
 };
 window.Pages = window.Pages || [];
