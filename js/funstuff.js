@@ -6,15 +6,19 @@ const toolsPage = {
     
     <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/biology.svg'); return false;">
 GUST Proxy</a>
-<br>
-    <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/graduate-edu/educationalbundles@main/science.svg'); return false;">
+    <a href="#" class="game-link" onclick="launchGame('https://testingcf.jsdelivr.net/gh/graduate-edu/educationalbundles@main/science.svg'); return false;">
 Sandstone Proxy</a>
      <a href="#" class="game-link" onclick="launchGame('https://esm.sh/gh/graduate-edu/stunning-octo-dollop@3a7810e/music-class.svg'); return false;">
 Shittify</a>
-     <a href="#" class="game-link" onclick="launchGame('https://cdn.jsdelivr.net/gh/linuxfandudeguy/urban-palm-tree@main/index.svg'); return false;">
+     <a href="#" class="game-link" onclick="launchGame('https://originfastly.jsdelivr.net/gh/linuxfandudeguy/urban-palm-tree@main/index.svg'); return false;">
 Norepted</a>
-
-
+     <a href="#" class="game-link" onclick="launchGame('https://quantil.jsdelivr.net/gh/reeyuki/YukiOsSingleHtml@main/yukios.svg'); return false;">
+YukiOS</a>
+     <a href="#" class="game-link" onclick="launchGame('https://gcore.jsdelivr.net/gh/linuxfandudeguy/urban-palm-tree@main/index%20(2).svg'); return false;">
+NautilusOS</a>
+       <a href="#" class="game-link" onclick="launchGame('https://raw.esm.sh/gh/linuxfandudeguy/google-class@main/index.svg'); return false;">
+HagalazOS</a>
+   
     <scr` + `ipt>
       let currentOverlay = null;
       let currentFrame = null;
