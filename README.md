@@ -29,3 +29,12 @@ games
 3. gn-math
 4. UGS
 5. Truffled
+6. reeyuki
+
+tools/fun stuff
+
+1. Nautilus Labs
+2. ading2210
+3. reeyuki
+4. SomeRandomFella
+5. WG563 / wea-f
