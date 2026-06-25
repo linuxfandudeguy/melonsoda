@@ -16,7 +16,7 @@ const gamesPage = {
       var gameListEl = document.getElementById("gameList");
       var searchBar = document.getElementById("searchBar");
 
-      let allEntries = [];
+      var allEntries = [];
 
       function renderList(filter = "") {
         gameListEl.innerHTML = "";
